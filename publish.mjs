@@ -17,7 +17,7 @@ const SOURCES = [
   { key: 'zhongnianren', worker: 'https://zhongnianren.lixuehanwork.workers.dev', subdir: 'zhongnianren' },
 ]
 
-const JSD_BASE = `https://gcore.jsdelivr.net/gh/${OWNER}/${REPO}@${BRANCH}`
+const JSD_BASE = `https://gcore.jsdelivr.net/gh/${OWNER}/${REPO}@latest`
 const MEDIA_PER_SOURCE = 50
 const MEDIA_MAX_BYTES = 3 * 1024 * 1024
 
