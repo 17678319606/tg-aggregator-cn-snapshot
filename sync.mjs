@@ -9,7 +9,7 @@ import fs from 'node:fs'
 
 const OWNER = '17678319606'
 const REPO = 'tg-aggregator-cn-snapshot'
-const JSD_BASE = `https://gcore.jsdelivr.net/gh/${OWNER}/${REPO}@latest`
+const GH_PAGES = `https://${OWNER}.github.io/${REPO}`
 const PAGE_SIZE = 50
 const MEDIA_MAX_BYTES = 3 * 1024 * 1024
 const CHANNEL_PAGES = 2 // 每频道抓几页（约 40-50 帖）
@@ -85,8 +85,8 @@ function appendHtmlToPostLinks(text) {
     /\.html$/i.test(url) || /\/$/.test(url) ? whole : `${url}.html${tail}`)
 }
 
-// ---------- 媒体下载（按内容 hash 去重，落库走 jsDelivr） ----------
-const mediaCache = new Map() // 原始URL -> jsDelivr URL
+// ---------- 媒体下载（按内容 hash 去重，落库走 GitHub Pages） ----------
+const mediaCache = new Map() // 原始URL -> GitHub Pages URL
 async function resolveMedia(url) {
   if (mediaCache.has(url)) return mediaCache.get(url)
   try {
@@ -97,7 +97,7 @@ async function resolveMedia(url) {
     const rel = `${curSubdir}/media/${hash}.${ext}`
     fs.mkdirSync(`${curSubdir}/media`, { recursive: true })
     fs.writeFileSync(rel, buf)
-    const jsd = `${JSD_BASE}/${curSubdir}/media/${hash}.${ext}`
+    const jsd = `${GH_PAGES}/${curSubdir}/media/${hash}.${ext}`
     mediaCache.set(url, jsd)
     return jsd
   } catch (e) {
@@ -108,7 +108,7 @@ async function resolveMedia(url) {
 }
 
 let curSubdir = ''
-// 把帖子正文里的 telegram CDN 图片替换为 jsDelivr URL（就地）
+// 把帖子正文里的 telegram CDN 图片替换为 GitHub Pages URL（就地）
 async function rewriteMediaInHtml($html) {
   const $ = cheerio.load($html)
   const imgs = $('img').toArray()
@@ -221,10 +221,10 @@ function indexHtml(chTitle, chDesc, items, siteBase) {
 <body><h1>${esc(chTitle)}</h1><p>${esc(chDesc)}</p><ul>${cards}</ul></body></html>`
 }
 function rootHtml() {
-  const cards = WORKERS.map(w => `<div class="card"><b>${esc(w.title)}</b><br><a href="${esc(`https://${OWNER}.github.io/${REPO}/${w.key}/`)}">github.io 列表</a> · <a href="${esc(`${JSD_BASE}/${w.key}/rss.xml`)}">RSS</a> · <a href="${esc(`${JSD_BASE}/${w.key}/rss.json`)}">JSON</a></div>`).join('')
+  const cards = WORKERS.map(w => `<div class="card"><b>${esc(w.title)}</b><br><a href="${esc(`${GH_PAGES}/${w.key}/`)}">github.io 列表</a> · <a href="${esc(`${GH_PAGES}/${w.key}/rss.xml`)}">RSS</a> · <a href="${esc(`${GH_PAGES}/${w.key}/rss.json`)}">JSON</a></div>`).join('')
   return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>频道聚合 · 国内镜像</title><style>body{max-width:720px;margin:2rem auto;padding:0 1rem;font-family:system-ui,sans-serif;line-height:1.7}.card{border:1px solid #eee;border-radius:10px;padding:1rem 1.2rem;margin:1rem 0}.card a{color:#2563eb}code{background:#f3f3f3;padding:.1rem .3rem;border-radius:4px}</style></head>
-<body><h1>频道聚合 · 国内镜像</h1><p>由 GitHub Actions 自动同步（直接抓取 Telegram 公开频道，不依赖第三方中转）。</p>${cards}<p class="sub">媒体经 jsDelivr 分发，文章原文点击即可在墙内阅读。</p></body></html>`
+<body><h1>频道聚合 · 国内镜像</h1><p>由 GitHub Actions 自动同步（直接抓取 Telegram 公开频道，不依赖第三方中转）。</p>${cards}<p class="sub">媒体与文章均托管于 GitHub Pages，点击即可在墙内阅读。</p></body></html>`
 }
 
 // ---------- 单 Worker 发布 ----------
