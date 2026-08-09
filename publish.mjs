@@ -41,6 +41,22 @@ async function getBytes(url) {
   if (!r.ok) throw new Error(`${url} -> ${r.status}`)
   return Buffer.from(await r.arrayBuffer())
 }
+// 带重试的抓取：源站（CF Worker）偶发抖动时自愈，避免把瞬时抖动误报成故障
+async function fetchWithRetry(url, { binary = false, tries = 3, delayMs = 5000 } = {}) {
+  let lastErr
+  for (let i = 1; i <= tries; i++) {
+    try {
+      return binary ? await getBytes(url) : await getText(url)
+    } catch (e) {
+      lastErr = e
+      if (i < tries) {
+        console.warn(`  retry ${i}/${tries} failed: ${e.message}; sleep ${delayMs}ms`)
+        await new Promise(r => setTimeout(r, delayMs))
+      }
+    }
+  }
+  throw lastErr
+}
 async function sha256Hex(buf) {
   const d = await crypto.subtle.digest('SHA-256', buf)
   return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, '0')).join('')
@@ -159,7 +175,7 @@ async function publishOne(src) {
   const log = (...a) => console.log(`[${src.key}]`, ...a)
   const siteBase = `https://${OWNER}.github.io/${REPO}/${src.subdir}/`
   log('fetch rss.xml ...')
-  const xml = await getText(`${src.worker}/rss.xml`)
+  const xml = await fetchWithRetry(`${src.worker}/rss.xml`)
   const feed = parseRss(xml)
   log(`parsed ${feed.items.length} items`)
 
@@ -174,7 +190,7 @@ async function publishOne(src) {
   log(`media to fetch: ${mediaPaths.length}`)
   for (const p of mediaPaths) {
     try {
-      const buf = await getBytes(`${src.worker}${p}`)
+      const buf = await fetchWithRetry(`${src.worker}${p}`, { binary: true })
       if (buf.length > MEDIA_MAX_BYTES) { log('skip large media', p); continue }
       const hash = await sha256Hex(buf)
       const ext = extFromUrl(p)
@@ -256,10 +272,19 @@ async function main() {
   const fs = await import('node:fs')
   fs.writeFileSync('.nojekyll', '')
   let total = 0
+  const failed = []
   for (const src of SOURCES) {
-    try { total += await publishOne(src) } catch (e) { console.error(`[${src.key}] FATAL`, e.message) }
+    try { total += await publishOne(src) } catch (e) { console.error(`[${src.key}] FATAL`, e.message); failed.push(src.key) }
   }
   fs.writeFileSync('index.html', rootHtml(SOURCES))
-  console.log(`DONE total items=${total}`)
+  // 把同步状态写到 /tmp（不进仓库，避免每次 run 都产生提交），供监控步骤判读
+  const status = {
+    time: new Date().toISOString(),
+    ok: SOURCES.map(s => s.key).filter(k => !failed.includes(k)),
+    failed,
+  }
+  fs.writeFileSync('/tmp/sync-status.json', JSON.stringify(status, null, 2))
+  console.log(`DONE total items=${total} | ok=${status.ok.join(',') || 'none'} | failed=${status.failed.join(',') || 'none'}`)
+  // 源站故障是"软失败"：仍正常提交其它源站的更新，由 workflow 监控步骤据此告警，本身不退出非零
 }
 main().catch(e => { console.error('FATAL', e); process.exit(1) })
