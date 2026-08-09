@@ -6,19 +6,21 @@ on:
   workflow_dispatch: {}    # 允许在 Actions 页面手动触发一次
 
 permissions:
-  contents: write          # 允许把生成的快照推送回本仓库
+  contents: write          # 允许把生成的快照推送回本仓库（含移动 latest 标签）
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # 需要完整历史才能移动标签
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: 生成静态快照（回源 CF Worker，海外 Runner 可直连）
         run: node publish.mjs
-      - name: 提交并推送
+      - name: 提交、推送并更新 latest 标签
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -27,6 +29,10 @@ jobs:
           git add -A
           git commit -m "snapshot: $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
           git push
-      - name: 清除 jsDelivr 缓存（否则 @main 会返回旧快照）
+          git tag -f latest
+          git push -f origin latest
+      - name: 清除 jsDelivr @latest 缓存（保证国内 CDN 即时刷新）
         run: |
-          curl -sS "https://purge.jsdelivr.net/gh/17678319606/tg-aggregator-cn-snapshot@main" || true
+          for f in 123yunpan/rss.xml 123yunpan/rss.json zhongnianren/rss.xml zhongnianren/rss.json; do
+            curl -sS "https://purge.jsdelivr.net/gh/17678319606/tg-aggregator-cn-snapshot@latest/$f" || true
+          done
