@@ -27,3 +27,6 @@ jobs:
           git add -A
           git commit -m "snapshot: $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "no changes"
           git push
+      - name: 清除 jsDelivr 缓存（否则 @main 会返回旧快照）
+        run: |
+          curl -sS "https://purge.jsdelivr.net/gh/17678319606/tg-aggregator-cn-snapshot@main" || true
