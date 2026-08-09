@@ -2,7 +2,7 @@ name: snapshot-sync
 
 on:
   schedule:
-    - cron: '3,18,33,48 * * * *'   # 每小时第17分运行（避开整点高峰）
+    - cron: '3,18,33,48 * * * *'   # 每15分钟同步一次（public仓库Actions免费无限，提频不增成本）
   workflow_dispatch: {}    # 允许在 Actions 页面手动触发一次
 
 permissions:
