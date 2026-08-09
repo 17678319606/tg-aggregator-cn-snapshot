@@ -21,9 +21,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: 安装 cheerio（解析 Telegram 公开频道网页用）
-        run: npm install cheerio@1
+      - name: 安装依赖（cheerio 解析频道页；@aws-sdk/client-s3 上传媒体到对象存储，可选）
+        run: npm install cheerio@1 @aws-sdk/client-s3
       - name: 生成静态快照（直接抓取 t.me/s/<频道>，海外 Runner 可直连，失败重试，不再依赖 CF Worker）
+        env:
+          # 媒体对象存储（可选；未配置则回退 GitHub Pages 仓库）
+          MEDIA_S3_ENDPOINT: ${{ secrets.MEDIA_S3_ENDPOINT }}
+          MEDIA_S3_BUCKET: ${{ secrets.MEDIA_S3_BUCKET }}
+          MEDIA_S3_REGION: ${{ secrets.MEDIA_S3_REGION }}
+          MEDIA_S3_KEY: ${{ secrets.MEDIA_S3_KEY }}
+          MEDIA_S3_SECRET: ${{ secrets.MEDIA_S3_SECRET }}
+          MEDIA_PUBLIC_BASE: ${{ secrets.MEDIA_PUBLIC_BASE }}
         run: node sync.mjs
       - name: 提交、推送并更新 latest 标签
         if: success()       # 仅当快照生成步骤无意外异常时才提交
