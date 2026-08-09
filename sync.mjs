@@ -85,8 +85,37 @@ function appendHtmlToPostLinks(text) {
     /\.html$/i.test(url) || /\/$/.test(url) ? whole : `${url}.html${tail}`)
 }
 
-// ---------- 媒体下载（按内容 hash 去重，落库走 GitHub Pages） ----------
-const mediaCache = new Map() // 原始URL -> GitHub Pages URL
+// ---------- 媒体落库（可选对象存储；未配置则回退 GitHub Pages 仓库） ----------
+// 对象存储走 S3 兼容协议（腾讯云 COS / 阿里云 OSS 等，须墙内可达；Cloudflare R2
+// 走 CF 骨干网、国内被墙，禁用）。通过 GitHub Actions secrets 注入以下变量即启用：
+//   MEDIA_S3_ENDPOINT / MEDIA_S3_BUCKET / MEDIA_S3_REGION / MEDIA_S3_KEY /
+//   MEDIA_S3_SECRET / MEDIA_PUBLIC_BASE
+const mediaCache = new Map() // 原始URL -> 公网URL
+let _s3 = undefined // undefined=未初始化, null=不可用, 否则 {client,PutObjectCommand}
+async function getS3() {
+  if (_s3 !== undefined) return _s3
+  if (!process.env.MEDIA_S3_ENDPOINT || !process.env.MEDIA_S3_BUCKET) { _s3 = null; return null }
+  try {
+    const s3 = await import('@aws-sdk/client-s3')
+    _s3 = {
+      client: new s3.S3Client({
+        endpoint: process.env.MEDIA_S3_ENDPOINT,
+        region: process.env.MEDIA_S3_REGION || 'auto',
+        forcePathStyle: true,
+        credentials: { accessKeyId: process.env.MEDIA_S3_KEY || '', secretAccessKey: process.env.MEDIA_S3_SECRET || '' },
+      }),
+      PutObjectCommand: s3.PutObjectCommand,
+    }
+    console.log('[media] S3 对象存储已启用:', process.env.MEDIA_S3_BUCKET)
+  } catch (e) {
+    console.warn('[media] S3 初始化失败，回退仓库:', e.message)
+    _s3 = null
+  }
+  return _s3
+}
+function mimeFromExt(ext) {
+  return ({ jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp', mp4: 'video/mp4', mov: 'video/quicktime', webm: 'video/webm', m4a: 'audio/mp4', mp3: 'audio/mpeg', pdf: 'application/pdf' }[ext.toLowerCase()]) || 'application/octet-stream'
+}
 async function resolveMedia(url) {
   if (mediaCache.has(url)) return mediaCache.get(url)
   try {
@@ -94,6 +123,20 @@ async function resolveMedia(url) {
     if (buf.length > MEDIA_MAX_BYTES) { console.warn('  skip large media', url); mediaCache.set(url, url); return url }
     const hash = await sha256Hex(buf)
     const ext = extFromUrl(url)
+    const key = `${curSubdir}/${hash}.${ext}`
+    const s3o = await getS3()
+    if (s3o) {
+      await s3o.client.send(new s3o.PutObjectCommand({
+        Bucket: process.env.MEDIA_S3_BUCKET,
+        Key: key,
+        Body: buf,
+        ContentType: mimeFromExt(ext),
+      }))
+      const pub = `${process.env.MEDIA_PUBLIC_BASE.replace(/\/$/, '')}/${key}`
+      mediaCache.set(url, pub)
+      return pub
+    }
+    // 回退：写入仓库（GitHub Pages 托管）
     const rel = `${curSubdir}/media/${hash}.${ext}`
     fs.mkdirSync(`${curSubdir}/media`, { recursive: true })
     fs.writeFileSync(rel, buf)
