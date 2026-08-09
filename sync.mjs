@@ -276,10 +276,17 @@ async function publishWorker(w) {
   posts = posts.filter(p => p.id && !seen.has(p.id) && seen.add(p.id))
   posts = posts.slice(0, PAGE_SIZE)
 
-  // 媒体落库 + 重写正文图片
+  // 媒体落库 + 重写正文图片 + 把附件图片拼回正文（否则墙内看不到图）
   for (const p of posts) {
     for (const u of p.mediaUrls) await resolveMedia(u)
     if (p.contentHtml) p.contentHtml = await rewriteMediaInHtml(p.contentHtml)
+    // 附件媒体（照片/视频封面/文档缩略）已下载到 GitHub Pages，拼回正文以在墙内可见
+    const gallery = p.mediaUrls
+      .map(u => { const gh = mediaCache.get(u); return (gh && gh !== u) ? gh : null })
+      .filter(Boolean)
+      .map(gh => `<img src="${esc(gh)}" alt="" loading="lazy">`)
+      .join('')
+    if (gallery) p.contentHtml = (p.contentHtml ? p.contentHtml + '<hr class="media-sep">' : '') + gallery
   }
 
   fs.mkdirSync(`${w.key}/posts`, { recursive: true })
