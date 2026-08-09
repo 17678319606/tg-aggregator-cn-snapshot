@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>墙内可访问 · Telegram 聚合镜像快照</title>
+<style>
+  :root{--bg:#0f1115;--card:#1a1d24;--fg:#e8eaed;--muted:#9aa0a6;--acc:#4f9dff;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;padding:32px 16px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 8px}
+  .note{background:#2a2113;border:1px solid #5a4716;color:#f0d9a8;padding:12px 14px;border-radius:10px;font-size:14px;margin:16px 0}
+  .card{background:var(--card);border:1px solid #2a2e37;border-radius:14px;padding:18px 20px;margin:14px 0}
+  .card h2{margin:0 0 4px;font-size:18px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 10px;word-break:break-all}
+  .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .btn{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;padding:8px 14px;border-radius:9px;font-size:14px}
+  .btn.ghost{background:transparent;border:1px solid #3a3f4a;color:var(--fg)}
+  footer{color:var(--muted);font-size:12px;margin-top:24px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>墙内可访问 · Telegram 聚合镜像快照</h1>
+  <p style="color:var(--muted)">两个源站跑在 Cloudflare Workers（<code>*.workers.dev</code>，中国大陆被墙）。本页是其内容的<b>静态快照</b>，托管于 EdgeOne 静态站，中国大陆可直接打开。</p>
+  <div class="note">
+    ⚠️ 这是<strong>快照</strong>而非实时同步：内容为抓取时刻的定格，不会自动更新。
+    条目中的原文链接仍指向被墙的 <code>workers.dev</code>，在中国大陆点击可能无法打开；
+    正文本身在快照内已可读。需要更新时，重新抓取并部署即可。
+  </div>
+  
+    <section class="card">
+      <h2>123云盘资源分享</h2>
+      <p class="sub">https://123yunpan.lixuehanwork.workers.dev/</p>
+      <p>快照条目数：<b>29</b></p>
+      <div class="links">
+        <a class="btn" href="123yunpan/rss.xml">RSS 2.0</a>
+        <a class="btn" href="123yunpan/rss.json">JSON Feed</a>
+        <a class="btn ghost" href="https://123yunpan.lixuehanwork.workers.dev/" target="_blank" rel="noopener">原站（墙外）</a>
+      </div>
+    </section>
+    <section class="card">
+      <h2>精选消息</h2>
+      <p class="sub">https://zhongnianren.lixuehanwork.workers.dev/</p>
+      <p>快照条目数：<b>30</b></p>
+      <div class="links">
+        <a class="btn" href="zhongnianren/rss.xml">RSS 2.0</a>
+        <a class="btn" href="zhongnianren/rss.json">JSON Feed</a>
+        <a class="btn ghost" href="https://zhongnianren.lixuehanwork.workers.dev/" target="_blank" rel="noopener">原站（墙外）</a>
+      </div>
+    </section>
+  <footer>快照生成时间：2026-08-09 13:32 UTC · 由 EdgeOne Pages 静态托管</footer>
+</div>
+</body>
+</html>
