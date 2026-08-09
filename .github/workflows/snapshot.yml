@@ -21,8 +21,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: 生成静态快照（回源 CF Worker，海外 Runner 可直连，失败重试）
-        run: node publish.mjs
+      - name: 安装 cheerio（解析 Telegram 公开频道网页用）
+        run: npm install cheerio@1
+      - name: 生成静态快照（直接抓取 t.me/s/<频道>，海外 Runner 可直连，失败重试，不再依赖 CF Worker）
+        run: node sync.mjs
       - name: 提交、推送并更新 latest 标签
         if: success()       # 仅当快照生成步骤无意外异常时才提交
         env:
@@ -52,7 +54,7 @@ jobs:
             catch (e) { core.setFailed('未找到同步状态文件'); return; }
             const failed = status.failed || [];
             const ok = status.ok || [];
-            const title = '🚨 tg-aggregator 同步异常';
+            const title = '\u{1F6A8} tg-aggregator \u540C\u6B65\u5F02\u5E38';
             const body = `同步状态 @ ${status.time}\n\n✅ 正常源站: ${ok.join(', ') || '无'}\n❌ 异常源站: ${failed.join(', ') || '无'}\n\n本告警由 GitHub Actions 自动生成；源站恢复后下次成功运行会自动关闭。`;
             const { owner, repo } = context.repo;
             const issues = await github.rest.issues.listForRepo({ owner, repo, state: 'open', per_page: 100 });
