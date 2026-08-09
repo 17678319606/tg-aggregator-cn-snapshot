@@ -2,7 +2,7 @@ name: snapshot-sync
 
 on:
   schedule:
-    - cron: '17 * * * *'   # 每小时第17分运行（避开整点高峰）
+    - cron: '3,18,33,48 * * * *'   # 每小时第17分运行（避开整点高峰）
   workflow_dispatch: {}    # 允许在 Actions 页面手动触发一次
 
 permissions:
