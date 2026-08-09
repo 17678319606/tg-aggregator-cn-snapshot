@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write          # 允许把生成的快照推送回本仓库（含移动 latest 标签）
+  issues: write            # 允许同步异常时自动开/关监控 Issue
 
 jobs:
   build:
@@ -18,9 +19,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: 生成静态快照（回源 CF Worker，海外 Runner 可直连）
+      - name: 生成静态快照（回源 CF Worker，海外 Runner 可直连，失败重试）
         run: node publish.mjs
       - name: 提交、推送并更新 latest 标签
+        if: success()       # 仅当快照生成步骤无意外异常时才提交
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -32,7 +34,35 @@ jobs:
           git tag -f latest
           git push -f origin latest
       - name: 清除 jsDelivr @latest 缓存（保证国内 CDN 即时刷新）
+        if: success()
         run: |
           for f in 123yunpan/rss.xml 123yunpan/rss.json zhongnianren/rss.xml zhongnianren/rss.json; do
             curl -sS "https://purge.jsdelivr.net/gh/17678319606/tg-aggregator-cn-snapshot@latest/$f" || true
           done
+      - name: 同步异常监控（源站挂掉/抓取失败时自动开Issue+让run变红；恢复自动关单）
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let status;
+            try { status = JSON.parse(fs.readFileSync('/tmp/sync-status.json','utf8')); }
+            catch (e) { core.setFailed('未找到同步状态文件'); return; }
+            const failed = status.failed || [];
+            const ok = status.ok || [];
+            const title = '🚨 tg-aggregator 同步异常';
+            const body = `同步状态 @ ${status.time}\n\n✅ 正常源站: ${ok.join(', ') || '无'}\n❌ 异常源站: ${failed.join(', ') || '无'}\n\n本告警由 GitHub Actions 自动生成；源站恢复后下次成功运行会自动关闭。`;
+            const { owner, repo } = context.repo;
+            const issues = await github.rest.issues.listForRepo({ owner, repo, state: 'open', per_page: 100 });
+            const existing = issues.data.find(i => i.title === title && !i.pull_request);
+            if (failed.length) {
+              if (existing) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `仍异常 @ ${status.time}：${failed.join(', ')}` });
+              } else {
+                await github.rest.issues.create({ owner, repo, title, body, labels: ['sync-monitor'] });
+              }
+              core.setFailed('源站异常: ' + failed.join(', '));
+            } else if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `✅ 已恢复 @ ${status.time}，所有源站正常。` });
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: 'closed' });
+            }
