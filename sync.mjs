@@ -239,8 +239,7 @@ async function publishWorker(w) {
   // 主路径：直接抓 t.me/s/<channel>
   for (const ch of w.channels) {
     try {
-      const { posts: cp, headerTitle, headerDesc } = await fetchChannel(ch)
-      if (headerTitle && !directOk) { siteTitle = headerTitle + '（国内镜像）'; siteDesc = headerDesc }
+      const { posts: cp } = await fetchChannel(ch)
       posts.push(...cp)
       directOk = true
       log(`${ch}: ${cp.length} 帖`)
@@ -255,8 +254,9 @@ async function publishWorker(w) {
       log('直连全失败 → 回退 Worker RSS')
       const xml = await getText(`${w.fallbackWorker}/rss.xml`)
       const feed = parseRss(xml)
-      siteTitle = feed.chTitle || w.title
-      siteDesc = feed.chDesc || w.desc
+      // 标题锁定为统一的「国内镜像」命名，不随 Worker/频道原始标题跳动
+      siteTitle = w.title
+      siteDesc = w.desc
       posts = feed.items.map(it => ({
         id: it.id, title: it.title, datetime: toIso(it.pubDate),
         contentHtml: it.description || '', mediaUrls: [], previewHref: '',
