@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '3,18,33,48 * * * *'   # 每15分钟同步一次（public仓库Actions免费无限，提频不增成本）
   workflow_dispatch: {}    # 允许在 Actions 页面手动触发一次
+  repository_dispatch:
+    types: [snapshot]      # 源站(BroadcastChannel Worker)内容更新时主动推送触发即时同步
 
 permissions:
   contents: write          # 允许把生成的快照推送回本仓库（含移动 latest 标签）
