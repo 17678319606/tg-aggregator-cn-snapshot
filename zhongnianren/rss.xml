@@ -6,6 +6,20 @@
   <description>分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络</description>
   <generator>github-actions-sync</generator>
   <item>
+    <title>者因为取样非随机而出现偏差。在此基础上取得的相关性规律，一旦离开样本范围就可能失效，从而失去参考性。策略共振许多量化策略，和技术分析策略相似，一旦某个策略被证明有效，随着使用者增加，策略共振之下，它的有效性就减弱。错误归因在应用比较广泛的的</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83218.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83218.html</guid>
+    <pubDate>Fri, 14 Aug 2026 07:18:08 GMT</pubDate>
+    <description>者因为取样非随机而出现偏差。&lt;br&gt;在此基础上取得的相关性规律，一旦离开样本范围就可能失效，从而失去参考性。&lt;br&gt;策略共振&lt;br&gt;许多量化策略，和技术分析策略相似，一旦某个策略被证明有效，随着使用者增加，策略共振之下，它的有效性就减弱。&lt;br&gt;错误归因&lt;br&gt;在应用比较广泛的的多因子量化策略中，是从数据的结果来反推原因，只要构建足够多的因子，就很可能实现某个特定的已知结果。&lt;br&gt;然而，当基于这个多因子组合构建的量化策略，用于实际交易的时候，可能会因为错误归因的原因而失效。因为从结果来倒退原因，无法准确区别哪些是偶然因素，哪些是决定性的因果因素。&lt;br&gt;黑箱&lt;br&gt;各种量化策略，包括高频、对冲或套利等，往往都没有内在因果关系，其策略的有效性大多建立在历史数据的强相关性上。策略的逻辑在于，根据历史数据，如果55%或更大概率是有效的，那么只要重复数据足够多，胜算就会积累。&lt;br&gt;04、量化交易是怎么工作的？&lt;br&gt;收集数据&lt;br&gt;收集股票、币种、债券、期货等金融产品的历史数据，比如价格、成交量、公司财务报表等。&lt;br&gt;开发模型&lt;br&gt;根据数据发现规律，比如“某币在下午3点后经常涨、交易订单、挂单量、资金费率等等”。将这些规律转化成数学模型，比如某种公式或规则。&lt;br&gt;回测策略&lt;br&gt;用历史数据测试这些规则是否有效，看看按照这种方法过去能不能赚到钱。&lt;br&gt;执行交易&lt;br&gt;使用计算机程序来自动化执行交易，比如发现规则成立时自动下单。&lt;br&gt;05、构建策略有两种思路&lt;br&gt;一种是数据挖掘，在一堆数据中通过统计、归纳发现稳定的结构，常用的技术分析便是此类。由于价格数据是随机变动的，不太可能有持续稳定的结构，需要不断的迭代优化，但未来新产生的数据少，很难在少量数据里发现新的稳定结构，所以，当历史数据的统计规律一旦失效，策略也基本就丧失价值了。&lt;br&gt;这种策略的开发路径是先有数据，再挖掘规律，再不断的优化迭代。&lt;br&gt;第二种是逻辑论证，通过数学推导得出一个结论，例如平价套利理论，通过计算会得出一个套利边界，只要价格超过边界，就存在套利机会，无论价格是怎么变动的，只要超过套利边界，就有套利机会。&lt;br&gt;这种策略的开发路径是先逻辑推导出规律，再对基础条件选代，例如利率的变动、储藏成本的变动，会得出不同的计算结果，用新的计算结果等待价格触发的交易机会。&lt;br&gt;明天我会发布一期视频，看看华尔街顶级交易员是如何利用量化套利上百亿的！&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/web2star" target="_blank"&gt;@web2star&lt;/a&gt; &lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9188.png')"&gt;&lt;b&gt;👈&lt;/b&gt;&lt;/i&gt;金融/投资/币圈&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83218"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
+    <title>你真的懂什么是量化交易吗？在币圈有人通过量化交易一天躺赚上几万U，也有团队通过量化夹子机器人月赚上百万U。更疯狂的是，华尔街顶级交易员利用量化赚上百亿。那么什么是量化？传统交易：老渔民凭经验判断哪里有鱼（看K线图/听消息）量化交易：用声呐扫</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83217.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83217.html</guid>
+    <pubDate>Fri, 14 Aug 2026 07:18:07 GMT</pubDate>
+    <description>你真的懂什么是量化交易吗？&lt;br&gt;在币圈有人通过量化交易一天躺赚上几万U，&lt;br&gt;也有团队通过量化夹子机器人月赚上百万U。&lt;br&gt;更疯狂的是，华尔街顶级交易员利用量化赚上百亿。&lt;br&gt;那么什么是量化？&lt;br&gt;传统交易：老渔民凭经验判断哪里有鱼（看K线图/听消息）&lt;br&gt;量化交易：用声呐扫描海底地形（数学模型），自动布网收网（程序化交易）&lt;br&gt;优势：包括纪律性、系统性、实时性、分散化等。&lt;br&gt;不足：包括样本误差和样本偏差、策略共振、错误归因、黑箱等。&lt;br&gt;01、为什么需要量化交易？&lt;br&gt;传统的投资方式往往依赖于经验和直觉，但人容易被情绪影响，比如恐慌、贪婪，不是靠个人感觉来管理资产。&lt;br&gt;而量化交易通过分析大量数据和模型，找到市场的规律，减少主观因素的干扰，找投资标的，建立可以重复使用并反复优化的投资策略，并指导投资决策过程。&lt;br&gt;在应用方面，量化投资几乎覆盖了投资的全过程，包括量化选股、量化择时、股指期货套利、商品期货套利、统计套利、算法交易、资产配置、风险控制、当然也包括加密货币市场等。&lt;br&gt;02、量化交易的优势&lt;br&gt;纪律性&lt;br&gt;传统投资很大程度上会受到诸如贪婪、恐惧等人的情绪的影响，有时候很难保证交易执行的纪律。&lt;br&gt;一般会严格执行量化模型所给出的投资指令，而不会随着投资者情绪的变化而随意更改，因而有着相对严格的交易纪律。&lt;br&gt;系统性&lt;br&gt;量化的系统性特征主要包括多层次的量化模型、多角度的观察及海量数据处理等。&lt;br&gt;多层次模型主要包括大类资产配置模型、行业选择模型、精选个股模型等。&lt;br&gt;多角度观察主要包括对宏观周期、市场结构、企业估值、成长性和盈利质量、市场情绪等多个角度的分析。&lt;br&gt;海量数据处理是指量化投资能通过计算机获得远超人脑的数据和信息处理能力，进而捕捉更多的投资机会。&lt;br&gt;实时性&lt;br&gt;能及时快速地跟踪市场变化，不断发现能够提供超额收益的新的统计模型，寻找新的交易机会。量化正是在不断寻找估值洼地，通过全面、系统性的扫描，捕捉错误定价、错误估值带来的机会。&lt;br&gt;分散化&lt;br&gt;量化交易的分散化，也可以说是靠概率取胜。&lt;br&gt;这表现为两个方面：&lt;br&gt;一是从历史数据中发现规律，这些历史规律多是过去有较大概率获胜的策略；&lt;br&gt;二是依靠筛选出股票/币种组合来取胜，而不是一只或几只股票/币种取胜，从投资组合理念来看也是捕获大概率获胜的股票/币种，而不是押宝到单个股票/币种上。&lt;br&gt;03、量化交易的不足&lt;br&gt;样本误差和样本偏差&lt;br&gt;很多量化策略非常依赖历史数据，但是历史数据可能缺乏足够的多样性和足够长时间的积累，因此样本取样可能因为数量过少而出现误差，或&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83217"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
     <title>现在 网页版的 App Store 是根据IP重定向了吗😳打开网页版 美区App Store 🪜不全局 被重定向到cn了出海赚美金｜优质资源｜优质信息｜内幕消息</title>
     <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11179.html</link>
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11179.html</guid>
@@ -6990,20 +7004,6 @@
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16650.html</guid>
     <pubDate>Tue, 04 Aug 2026 19:15:00 GMT</pubDate>
     <description>昨天莫名其妙的参加了一个富婆局，五个离异富婆(在县城人均千万以上资产)加我一个男人。&lt;br&gt;得知我滴酒不沾，富婆们纷纷表示，原以为能喝个花酒……&lt;br&gt;老实说，还真有一位徐娘半老的，我要不要调养一下身体，换一条路线奋斗呢？&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09FA494.png')"&gt;&lt;b&gt;🤔&lt;/b&gt;&lt;/i&gt;&lt;p&gt;&lt;a href="https://t.me/s/dogdairy/16650"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>沉没成本不应该参与决策，这是最最关键的mindset，但也是执行中最反人性的。</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16649.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16649.html</guid>
-    <pubDate>Tue, 04 Aug 2026 18:51:00 GMT</pubDate>
-    <description>沉没成本不应该参与决策，这是最最关键的mindset，但也是执行中最反人性的。&lt;p&gt;&lt;a href="https://t.me/s/dogdairy/16649"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>普通人如何杀出底层？1、删除落后价值观，输入商业思维；2、成年后开始学习摆摊，开店，赚钱；3、不依赖父母，凡事靠自己；4、精通一技之长；5、第一次创业尽量低成本，0成本；6、除了吃饭，睡觉，停止一切娱乐；7、创业之前，必须从事本行业5-10</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82780.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82780.html</guid>
-    <pubDate>Tue, 04 Aug 2026 18:42:00 GMT</pubDate>
-    <description>普通人如何杀出底层？&lt;br&gt;1、删除落后价值观，输入商业思维；&lt;br&gt;2、成年后开始学习摆摊，开店，赚钱；&lt;br&gt;3、不依赖父母，凡事靠自己；&lt;br&gt;4、精通一技之长；&lt;br&gt;5、第一次创业尽量低成本，0成本；&lt;br&gt;6、除了吃饭，睡觉，停止一切娱乐；&lt;br&gt;7、创业之前，必须从事本行业5-10年；&lt;br&gt;8、想赚大钱，必须牺牲自己的舒适生活，否则就接受平庸；&lt;br&gt;9、忘掉人情世故，不内耗，只专注赚钱；&lt;br&gt;10、阅读企业家传记，研究商业模式，提升商业认知。&lt;br&gt;&lt;br&gt;每日吃瓜 &lt;a href="https://t.me/doubannew" target="_blank"&gt;@doubannew&lt;/a&gt;&lt;br&gt;每日尴图 &lt;a href="https://t.me/moyu2023" target="_blank"&gt;@moyu2023&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/82780"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
   </item>
 </channel>
 </rss>
