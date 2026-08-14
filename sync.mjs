@@ -1,24 +1,50 @@
 // sync.mjs — 抓取 Telegram 公开频道，生成国内可达的纯文本 RSS 镜像（GitHub Pages 充当墙内代理）
-// 依赖：cheerio（workflow 内 npm install）。Node 18+ ESM。
+// 依赖：cheerio、nodemailer（workflow 内 npm install）。Node 18+ ESM。
 //
 // 设计原则（用户明确）：不做任何媒体重托管。正文只保留文字与原文链接，
 // 图片/视频由读者在 Telegram 原帖查看。仓库保持轻量，github.io 加载快，墙内可读。
 //
-// 同步机制：CF 源站（BroadcastChannel Worker）内容更新时通过 repository_dispatch
-// 主动触发本流程即时重算；同时保留每 15 分钟定时兜底。任一通道都能让 github.io 上的
-// RSS 保持新鲜，国内用户经 github.io 订阅即可。
+// 同步机制（三重触发，互斥串行，绝不重复造数据）：
+//   1) CF 源站（BroadcastChannel Worker）内容更新时 repository_dispatch 主动推送（内容一变立即同步）
+//   2) 你的 1H1G 宝塔服务器定时调 GitHub API 触发（server/trigger-sync.sh，可精确到分钟）
+//   3) GitHub 自带每 15 分钟定时兜底
+//   以上三条共享 workflow 并发组 tg-aggregator-sync + cancel-in-progress:false，
+//   任意时刻只跑一个，且文章以「消息ID」命名 + 全局去重，重复触发只会覆盖同一文件，绝不会生成重复文章。
 //
-// 数据来源：主路径直连 t.me/s/<频道>（海外 Runner 可直连）；若某源站全部频道失败，
-// 回退该源站 CF Worker 的 rss.xml。
+// 存储策略（防无限堆积，双保险）：
+//   - 常态：每个频道组最多保留 MAX_POSTS 篇文章页（硬上限，已恒定有界）。
+//   - 应急：若仓库体积超过安全线 80%（默认 1GB 的 80% = 800MB），本次按 EMERGENCY_MAX_POSTS 保留并 git gc。
+//   纯文本快照常态仅几 MB，应急分支几乎不会触发，仅作 pathological 兜底。
 
 import * as cheerio from 'cheerio'
 import fs from 'node:fs'
+import path from 'node:path'
+import { execSync } from 'node:child_process'
 
 const OWNER = '17678319606'
 const REPO = 'tg-aggregator-cn-snapshot'
 const GH_PAGES = `https://${OWNER}.github.io/${REPO}`
-const PAGE_SIZE = 50
-const CHANNEL_PAGES = 2 // 每频道抓几页（约 40-50 帖）
+
+// —— 保留与容量策略 ——
+const MAX_POSTS = 50                  // 单频道组常态保留上限（防无限堆积的核心开关，必须有界值）
+const EMERGENCY_MAX_POSTS = 10        // 容量超 80% 安全线时的紧急保留上限
+const CHANNEL_PAGES = 2               // 每频道抓几页（约 40-50 帖）
+
+// 仓库体积安全线：GitHub 建议仓库 < 1GB（Pages 软上限 1GB，硬上限 5GB）。
+// 本项目纯文本，常态仅数 MB；把 1GB 当「危险线」，超过 80%（800MB）即紧急裁剪。
+const REPO_SAFE_LIMIT_BYTES = 1024 * 1024 * 1024
+const CAPACITY_WARN_RATIO = 0.8
+
+// —— 报警通道 ——
+// 企业微信机器人 webhook（key 已内置为默认值，也可在 workflow 里用 secrets.WX_WORK_WEBHOOK 覆盖）。
+const WX_WEBHOOK = process.env.WX_WORK_WEBHOOK ||
+  'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=ca5e918f-8e98-4c96-9734-8e5d27b298d0'
+// 邮件告警收件人（也可 secrets.ALERT_EMAIL_TO 覆盖）。发件需配置 SMTP_* 环境变量，未配置时自动跳过（微信仍推送）。
+const ALERT_EMAIL_TO = process.env.ALERT_EMAIL_TO || 'weixinkaifa@jinbufenzi.work'
+
+// 模块级：本次运行的保留上限（容量超限时会被下调）
+let RETENTION = MAX_POSTS
+let capacityEmergency = false
 
 // 两个核心项目
 const WORKERS = [
@@ -72,13 +98,9 @@ function stripMedia(html) {
   return $('#__x').html() || ''
 }
 
-// 把 /posts/<id>（无 .html）补成 .html，与文章页对齐
-function appendHtmlToPostLinks(text) {
-  return text.replace(/(https?:\/\/[^"'`\s<>]*?\/posts\/[^"'`\s<>]+)(["'`\s<>])/g, (whole, url, tail) =>
-    /\.html$/i.test(url) || /\/$/.test(url) ? whole : `${url}.html${tail}`)
-}
-
 // ---------- 解析单个频道 ----------
+// 分页逻辑：首屏抓取最新帖；随后以本页最小 msgId 作为 before 继续往前翻，直到翻不动或触底。
+// 以 data-post 的「频道.消息ID」作为唯一键，跨频道天然不冲突，重复触发只会覆盖同一文件。
 async function fetchChannel(channel, pages = CHANNEL_PAGES) {
   const posts = []
   let before = null
@@ -101,6 +123,7 @@ async function fetchChannel(channel, pages = CHANNEL_PAGES) {
       const ch = dataPost.slice(0, slash)
       const msgId = dataPost.slice(slash + 1)
       const numId = Number(msgId)
+      if (!Number.isFinite(numId)) continue
       if (numId < minId) minId = numId
       const timeEl = msg.find('.tgme_widget_message_date time')
       const dtRaw = timeEl.attr('datetime') || timeEl.attr('data-time') || ''
@@ -122,7 +145,7 @@ async function fetchChannel(channel, pages = CHANNEL_PAGES) {
         originalUrl: `https://t.me/s/${ch}/${msgId}`,
       })
     }
-    if (!isFinite(minId) || minId <= 1) break
+    if (!Number.isFinite(minId) || minId <= 1) break
     before = String(minId)
   }
   return { posts, headerTitle, headerDesc }
@@ -181,6 +204,73 @@ function rootHtml() {
 <body><h1>频道聚合 · 国内镜像</h1><p>由 GitHub Actions 自动同步（直接抓取 Telegram 公开频道，不依赖第三方中转）。文章托管于 GitHub Pages，墙内可直接阅读；图片/视频请点击「原帖」在 Telegram 查看。</p>${cards}</body></html>`
 }
 
+// ---------- 仓库体积统计（含 .git，排除 node_modules） ----------
+function repoSizeBytes(root = '.') {
+  let total = 0
+  const walk = (dir) => {
+    let entries
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }) } catch { return }
+    for (const e of entries) {
+      const p = path.join(dir, e.name)
+      if (e.isDirectory()) {
+        if (e.name === 'node_modules' || e.name === '.git' && false) { /* 仍统计 .git */ }
+        if (e.name === 'node_modules') continue
+        walk(p)
+      } else if (e.isFile()) {
+        try { total += fs.statSync(p).size } catch { /* ignore */ }
+      }
+    }
+  }
+  walk(root)
+  return total
+}
+
+// ---------- 报警：企业微信机器人 + 邮件 ----------
+async function wxAlert(subject, detail) {
+  try {
+    const content = `## ⚠️ tg-aggregator 同步告警\n> **${subject}**\n\n${detail}\n\n> 时间：${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`
+    const r = await fetch(WX_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ msgtype: 'markdown', markdown: { content } }),
+    })
+    if (!r.ok) console.warn(`[alert] 企业微信返回 HTTP ${r.status}`)
+    else console.log('[alert] 企业微信告警已推送')
+  } catch (e) {
+    console.warn('[alert] 企业微信发送失败:', e.message)
+  }
+}
+
+async function emailAlert(subject, detail) {
+  const host = process.env.SMTP_HOST, user = process.env.SMTP_USER, pass = process.env.SMTP_PASS
+  if (!host || !user || !pass) {
+    console.log('[alert] 未配置 SMTP_* 环境变量，跳过邮件告警（企业微信仍会推送）')
+    return
+  }
+  try {
+    const nodemailer = (await import('nodemailer')).default
+    const transport = nodemailer.createTransport({
+      host,
+      port: Number(process.env.SMTP_PORT || 465),
+      secure: process.env.SMTP_SECURE !== '0',
+      auth: { user, pass },
+    })
+    await transport.sendMail({
+      from: process.env.ALERT_EMAIL_FROM || user,
+      to: ALERT_EMAIL_TO,
+      subject: `[tg-aggregator告警] ${subject}`,
+      text: `${detail}\n\n时间：${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`,
+    })
+    console.log(`[alert] 已发送邮件告警至 ${ALERT_EMAIL_TO}`)
+  } catch (e) {
+    console.warn('[alert] 邮件发送失败:', e.message)
+  }
+}
+
+async function alert(subject, detail) {
+  await Promise.allSettled([wxAlert(subject, detail), emailAlert(subject, detail)])
+}
+
 // ---------- 单 Worker 发布 ----------
 async function publishWorker(w) {
   const log = (...a) => console.log(`[${w.key}]`, ...a)
@@ -188,6 +278,7 @@ async function publishWorker(w) {
   let posts = []
   let siteTitle = w.title, siteDesc = w.desc
   let directOk = false
+  const failedChannels = []
 
   // 主路径：直接抓 t.me/s/<channel>
   for (const ch of w.channels) {
@@ -197,6 +288,7 @@ async function publishWorker(w) {
       directOk = true
       log(`${ch}: ${cp.length} 帖`)
     } catch (e) {
+      failedChannels.push(ch)
       console.warn(`[${w.key}] ${ch} 直连失败: ${e.message}`)
     }
   }
@@ -207,8 +299,6 @@ async function publishWorker(w) {
       log('直连全失败 → 回退 CF Worker RSS')
       const xml = await getText(`${w.fallbackWorker}/rss.xml`)
       const feed = parseRss(xml)
-      siteTitle = w.title
-      siteDesc = w.desc
       posts = feed.items.map(it => ({
         id: it.id,
         title: it.title,
@@ -224,13 +314,13 @@ async function publishWorker(w) {
     }
   }
 
-  if (posts.length === 0) return { count: 0, ok: false }
+  if (posts.length === 0) return { count: 0, ok: false, failedChannels, pruned: 0 }
 
-  // 排序 + 去重 + 截断
+  // 排序 + 去重（按消息ID，天然幂等）+ 截断到本次保留上限
   posts.sort((a, b) => new Date(b.datetime) - new Date(a.datetime))
   const seen = new Set()
   posts = posts.filter(p => p.id && !seen.has(p.id) && seen.add(p.id))
-  posts = posts.slice(0, PAGE_SIZE)
+  posts = posts.slice(0, RETENTION)
 
   fs.mkdirSync(`${w.key}/posts`, { recursive: true })
   posts.forEach((it, idx) => {
@@ -240,6 +330,23 @@ async function publishWorker(w) {
     fs.writeFileSync(`${w.key}/posts/${it.id}.html`, html)
   })
   log(`写入 ${posts.length} 篇文章页`)
+
+  // —— 存储保留策略（防无限堆积）——
+  // 只保留保留集内的文章页；掉出前 RETENTION 篇的旧文件一律删除并随 git add -A 从仓库移除。
+  // 无论源站发多少帖，每个频道组的 posts/ 目录恒定为 ≤ RETENTION 个文件（正常=MAX_POSTS，应急=EMERGENCY_MAX_POSTS）。
+  const keepIds = new Set(posts.map(p => p.id))
+  let pruned = 0
+  if (fs.existsSync(`${w.key}/posts`)) {
+    for (const f of fs.readdirSync(`${w.key}/posts`)) {
+      if (!f.endsWith('.html')) continue
+      const id = f.slice(0, -'.html'.length)
+      if (!keepIds.has(id)) {
+        fs.rmSync(`${w.key}/posts/${f}`, { force: true })
+        pruned++
+      }
+    }
+  }
+  if (pruned) log(`清理 ${pruned} 个孤儿文章页（仓库体积有界）`)
 
   const itemsXml = posts.map(it => {
     const link = `${siteBase}posts/${it.id}.html`
@@ -280,29 +387,77 @@ ${itemsXml}
   log('写入 rss.xml + rss.json')
   fs.writeFileSync(`${w.key}/index.html`, indexHtml(siteTitle, siteDesc, posts, siteBase))
 
-  return { count: posts.length, ok: directOk }
+  return { count: posts.length, ok: directOk, failedChannels, pruned }
 }
 
 // ---------- 主流程 ----------
 async function main() {
   fs.writeFileSync('.nojekyll', '')
+
+  // —— 容量检测（应急裁剪前置判断）——
+  const sizeBytes = repoSizeBytes('.')
+  const ratio = sizeBytes / REPO_SAFE_LIMIT_BYTES
+  if (ratio > CAPACITY_WARN_RATIO) {
+    capacityEmergency = true
+    RETENTION = EMERGENCY_MAX_POSTS
+    console.warn(`⚠️ 仓库体积 ${(sizeBytes / 1048576).toFixed(1)}MB 已达安全线 ${(CAPACITY_WARN_RATIO * 100)}%（阈值 ${(CAPACITY_WARN_RATIO * REPO_SAFE_LIMIT_BYTES / 1048576).toFixed(0)}MB），本次按紧急上限 ${EMERGENCY_MAX_POSTS} 篇保留`)
+  }
+
   const failed = []
+  const details = []
   for (const w of WORKERS) {
     try {
       const r = await publishWorker(w)
+      details.push({ key: w.key, count: r.count, ok: r.ok, failedChannels: r.failedChannels, pruned: r.pruned })
       if (!r.ok || r.count === 0) failed.push(w.key)
     } catch (e) {
-      console.error(`[${w.key}] FATAL`, e.message)
+      console.error(`[${w.key}] FATAL`, e.stack || e.message)
       failed.push(w.key)
+      details.push({ key: w.key, count: 0, ok: false, error: e.message })
     }
   }
   fs.writeFileSync('index.html', rootHtml())
+
+  // —— 容量应急：git gc 回收 .git 历史膨胀的空间 ——
+  if (capacityEmergency) {
+    try {
+      console.log('执行 git gc --prune=now 回收空间…')
+      execSync('git gc --prune=now', { stdio: 'inherit' })
+    } catch (e) {
+      console.warn('[gc] 执行失败(可忽略):', e.message)
+    }
+  }
+
   const status = {
     time: new Date().toISOString(),
     ok: WORKERS.map(w => w.key).filter(k => !failed.includes(k)),
     failed,
+    details,
+    repoSizeMB: +(sizeBytes / 1048576).toFixed(2),
+    capacityEmergency,
   }
   fs.writeFileSync('/tmp/sync-status.json', JSON.stringify(status, null, 2))
-  console.log(`DONE | ok=${status.ok.join(',') || 'none'} | failed=${status.failed.join(',') || 'none'}`)
+
+  const totalPosts = details.reduce((s, d) => s + (d.count || 0), 0)
+  const totalPruned = details.reduce((s, d) => s + (d.pruned || 0), 0)
+  console.log(`DONE | ok=${status.ok.join(',') || 'none'} | failed=${status.failed.join(',') || 'none'} | posts=${totalPosts} | pruned=${totalPruned} | repoSize=${(sizeBytes / 1048576).toFixed(1)}MB`)
+
+  // —— 报警 ——
+  if (capacityEmergency) {
+    await alert('仓库容量超阈值', `仓库体积 ${(sizeBytes / 1048576).toFixed(1)}MB 超过 ${(CAPACITY_WARN_RATIO * 100)}% 安全线，已紧急裁剪至每频道组 ${EMERGENCY_MAX_POSTS} 篇并执行 git gc。请检查是否有异常膨胀。`)
+  }
+  if (failed.length) {
+    const detailLines = details.map(d => {
+      if (d.error) return `- ${d.key}: 崩溃 ${d.error}`
+      if (d.failedChannels && d.failedChannels.length) return `- ${d.key}: 直连失败频道 ${d.failedChannels.join(',')}（已尝试回退）`
+      return `- ${d.key}: 无文章产出`
+    }).join('\n')
+    await alert('部分源站同步失败', `异常源站：${failed.join(', ')}\n\n${detailLines}\n\n源站恢复后下次成功运行将自动恢复正常。`)
+  }
 }
-main().catch(e => { console.error('FATAL', e); process.exit(1) })
+
+main().catch(async (e) => {
+  console.error('FATAL', e.stack || e.message)
+  await alert('同步进程崩溃', `主流程未捕获异常：\n${e.stack || e.message}`)
+  process.exit(1)
+})
