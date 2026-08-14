@@ -11,10 +11,11 @@
 //   以上三条共享 workflow 并发组 tg-aggregator-sync + cancel-in-progress:false，
 //   任意时刻只跑一个，且文章以「消息ID」命名 + 全局去重，重复触发只会覆盖同一文件，绝不会生成重复文章。
 //
-// 存储策略（防无限堆积，双保险）：
-//   - 常态：每个频道组最多保留 MAX_POSTS 篇文章页（硬上限，已恒定有界）。
+// 存储策略（防无限堆积，双保险 + 增量保留）：
+//   - 增量保留：每轮合并「上一轮保留集(rss.json) + 本轮新抓」，按时间排序取最新 MAX_POSTS 篇。
+//     无论当轮抓取多少，都不会误删已有内容；填满后恒定 ≤ MAX_POSTS 篇/频道，新增顶替最旧。
 //   - 应急：若仓库体积超过安全线 80%（默认 1GB 的 80% = 800MB），本次按 EMERGENCY_MAX_POSTS 保留并 git gc。
-//   纯文本快照常态仅几 MB，应急分支几乎不会触发，仅作 pathological 兜底。
+//   纯文本快照每频道 1000 篇常态仅约 10MB，应急分支几乎不会触发，仅作 pathological 兜底。
 
 import * as cheerio from 'cheerio'
 import fs from 'node:fs'
@@ -26,9 +27,11 @@ const REPO = 'tg-aggregator-cn-snapshot'
 const GH_PAGES = `https://${OWNER}.github.io/${REPO}`
 
 // —— 保留与容量策略 ——
-const MAX_POSTS = 50                  // 单频道组常态保留上限（防无限堆积的核心开关，必须有界值）
-const EMERGENCY_MAX_POSTS = 10        // 容量超 80% 安全线时的紧急保留上限
-const CHANNEL_PAGES = 2               // 每频道抓几页（约 40-50 帖）
+const MAX_POSTS = 1000               // 单频道组常态保留上限（每个频道恒定保留最新 1000 篇，恒为有界值）
+const EMERGENCY_MAX_POSTS = 200      // 容量超 80% 安全线时的紧急保留上限（远小于常态，仅作 pathological 兜底）
+const CHANNEL_PAGES_RECENT = 5       // 常态每轮抓近期几页（覆盖两次同步间新增，约 100+ 帖）
+const RECENT_TARGET = 150            // 常态每轮抓取目标帖数（覆盖两次同步间隔内的新增）
+const MAX_FETCH_PAGES = 80           // 抓取历史硬上限（首轮/重建填满用，防止无限翻页失控）
 
 // 仓库体积安全线：GitHub 建议仓库 < 1GB（Pages 软上限 1GB，硬上限 5GB）。
 // 本项目纯文本，常态仅数 MB；把 1GB 当「危险线」，超过 80%（800MB）即紧急裁剪。
@@ -90,6 +93,18 @@ function toIso(input) {
   return isNaN(t) ? new Date().toISOString() : new Date(t).toISOString()
 }
 
+// 从已存 rss.json 的 content_html 中剥离「查看 Telegram 原帖」段，还原纯正文（避免写入时重复拼接 orig）
+function stripOrig(html = '') {
+  return String(html)
+    .replace(/<p>\s*<a[^>]*>查看 Telegram 原帖（含图片\/视频）<\/a>\s*<\/p>/g, '')
+    .replace(/<p><a[^>]*>查看 Telegram 原帖（含图片\/视频）<\/a><\/p>/g, '')
+}
+// 从 content_html 提取原帖 URL，供重建文章页时还原「查看原帖」链接
+function extractOrigUrl(html = '') {
+  const m = String(html).match(/<a\s+[^>]*href="(https:\/\/t\.me\/s\/[^"]+)"[^>]*>查看 Telegram 原帖/)
+  return m ? m[1] : undefined
+}
+
 // 去除正文中所有媒体与脚本标签，仅保留文字与链接（不重托管任何媒体）
 function stripMedia(html) {
   if (!html) return ''
@@ -99,17 +114,25 @@ function stripMedia(html) {
 }
 
 // ---------- 解析单个频道 ----------
-// 分页逻辑：首屏抓取最新帖；随后以本页最小 msgId 作为 before 继续往前翻，直到翻不动或触底。
+// 目标驱动翻页：抓到 targetPosts 篇、或翻不动触底、或达到 MAX_FETCH_PAGES 硬上限即停。
+//   - 首轮/重建（保留集未填满）：targetPosts = MAX_POSTS，会把历史尽量抓满到 1000 篇。
+//   - 常态（保留集已填满）：targetPosts = RECENT_TARGET，只抓近期几页覆盖两次同步间的新增。
 // 以 data-post 的「频道.消息ID」作为唯一键，跨频道天然不冲突，重复触发只会覆盖同一文件。
-async function fetchChannel(channel, pages = CHANNEL_PAGES) {
+async function fetchChannel(channel, targetPosts = MAX_POSTS) {
   const posts = []
   let before = null
   let headerTitle = '', headerDesc = ''
-  for (let p = 0; p < pages; p++) {
+  for (let pages = 0; pages < MAX_FETCH_PAGES; pages++) {
     const url = before ? `https://t.me/s/${channel}?before=${before}` : `https://t.me/s/${channel}`
-    const html = await getText(url)
+    let html
+    try {
+      html = await getText(url)
+    } catch (e) {
+      console.warn(`  [${channel}] 第 ${pages + 1} 页抓取失败，停止翻页: ${e.message}`)
+      break
+    }
     const $ = cheerio.load(html)
-    if (p === 0) {
+    if (pages === 0) {
       headerTitle = $('.tgme_channel_info_header_title').first().text().trim()
       headerDesc = $('.tgme_channel_info_description').first().text().trim()
     }
@@ -145,10 +168,11 @@ async function fetchChannel(channel, pages = CHANNEL_PAGES) {
         originalUrl: `https://t.me/s/${ch}/${msgId}`,
       })
     }
+    if (posts.length >= targetPosts) break   // 已抓够目标，停止翻页（常态下避免无谓的历史抓取）
     if (!Number.isFinite(minId) || minId <= 1) break
     before = String(minId)
   }
-  return { posts, headerTitle, headerDesc }
+  return { posts: posts.slice(0, targetPosts), headerTitle, headerDesc }
 }
 
 // ---------- 回退：解析原 Worker RSS（CF 源站） ----------
@@ -275,16 +299,45 @@ async function alert(subject, detail) {
 async function publishWorker(w) {
   const log = (...a) => console.log(`[${w.key}]`, ...a)
   const siteBase = `https://${OWNER}.github.io/${REPO}/${w.key}/`
-  let posts = []
   let siteTitle = w.title, siteDesc = w.desc
   let directOk = false
   const failedChannels = []
 
+  // —— 加载上一轮保留集（增量合并的基础，避免当轮抓取不足时误删已有内容）——
+  let prevItems = []
+  const rssJsonPath = `${w.key}/rss.json`
+  if (fs.existsSync(rssJsonPath)) {
+    try {
+      const j = JSON.parse(fs.readFileSync(rssJsonPath, 'utf8'))
+      prevItems = (j.items || []).map(it => {
+        const raw = String(it.id || it.url || '')
+        const id = raw.split('/posts/')[1] || raw
+        return {
+          id: id.replace(/\.html$/, ''),
+          datetime: it.date_published,
+          title: it.title,
+          contentHtml: stripOrig(it.content_html || ''),
+          originalUrl: extractOrigUrl(it.content_html || ''),
+        }
+      }).filter(it => it.id)
+    } catch (e) {
+      console.warn(`[${w.key}] 读取上次 rss.json 失败，按重建处理: ${e.message}`)
+    }
+  }
+
+  // —— 决定本轮抓取目标 ——
+  // 若上一轮未填满（首轮/重建），抓满 MAX_POSTS 历史；否则只抓近期新增（RECENT_TARGET）。
+  const needHistory = MAX_POSTS - prevItems.length
+  const targetPosts = needHistory > 0 ? MAX_POSTS : RECENT_TARGET
+
   // 主路径：直接抓 t.me/s/<channel>
+  let newPosts = []
   for (const ch of w.channels) {
     try {
-      const { posts: cp } = await fetchChannel(ch)
-      posts.push(...cp)
+      const { posts: cp, headerTitle, headerDesc } = await fetchChannel(ch, targetPosts)
+      newPosts.push(...cp)
+      if (headerTitle) siteTitle = headerTitle
+      if (headerDesc) siteDesc = headerDesc
       directOk = true
       log(`${ch}: ${cp.length} 帖`)
     } catch (e) {
@@ -294,12 +347,12 @@ async function publishWorker(w) {
   }
 
   // 回退：全部频道直连失败 → 原 CF Worker RSS（纯文本，不重托管媒体）
-  if (posts.length === 0) {
+  if (newPosts.length === 0) {
     try {
       log('直连全失败 → 回退 CF Worker RSS')
       const xml = await getText(`${w.fallbackWorker}/rss.xml`)
       const feed = parseRss(xml)
-      posts = feed.items.map(it => ({
+      newPosts = feed.items.map(it => ({
         id: it.id,
         title: it.title,
         datetime: toIso(it.pubDate),
@@ -308,32 +361,41 @@ async function publishWorker(w) {
         originalUrl: `${w.fallbackWorker}/posts/${it.id}`,
       }))
       directOk = true
-      log(`回退得到 ${posts.length} 帖`)
+      log(`回退得到 ${newPosts.length} 帖`)
     } catch (e) {
       console.error(`[${w.key}] 回退也失败: ${e.message}`)
     }
   }
 
+  // —— 增量合并：prev（上一轮保留集）+ newPosts（本轮新抓），按时间排序去重，取最新 RETENTION ——
+  const merged = new Map()
+  for (const it of prevItems) merged.set(it.id, it)
+  for (const it of newPosts) merged.set(it.id, it) // 新抓覆盖同 id
+  let posts = [...merged.values()]
   if (posts.length === 0) return { count: 0, ok: false, failedChannels, pruned: 0 }
 
-  // 排序 + 去重（按消息ID，天然幂等）+ 截断到本次保留上限
   posts.sort((a, b) => new Date(b.datetime) - new Date(a.datetime))
   const seen = new Set()
   posts = posts.filter(p => p.id && !seen.has(p.id) && seen.add(p.id))
   posts = posts.slice(0, RETENTION)
+  log(`保留集 ${posts.length} 篇（prev ${prevItems.length} + 新抓 ${newPosts.length}，合并去重后取最新 ${RETENTION}）`)
 
+  // —— 写文章页：仅当磁盘缺失时写；prev 已存在的保留不重写（省 IO，且 git 不因内容相同而膨胀）——
   fs.mkdirSync(`${w.key}/posts`, { recursive: true })
+  let written = 0
   posts.forEach((it, idx) => {
+    const fp = `${w.key}/posts/${it.id}.html`
+    if (fs.existsSync(fp)) return
     const prev = idx > 0 ? `${siteBase}posts/${posts[idx - 1].id}.html` : null
     const next = idx < posts.length - 1 ? `${siteBase}posts/${posts[idx + 1].id}.html` : null
     const html = articleHtml(it, siteTitle, it.contentHtml || '', siteBase, prev, next)
-    fs.writeFileSync(`${w.key}/posts/${it.id}.html`, html)
+    fs.writeFileSync(fp, html)
+    written++
   })
-  log(`写入 ${posts.length} 篇文章页`)
+  if (written) log(`新增/重建 ${written} 篇文章页`)
 
   // —— 存储保留策略（防无限堆积）——
-  // 只保留保留集内的文章页；掉出前 RETENTION 篇的旧文件一律删除并随 git add -A 从仓库移除。
-  // 无论源站发多少帖，每个频道组的 posts/ 目录恒定为 ≤ RETENTION 个文件（正常=MAX_POSTS，应急=EMERGENCY_MAX_POSTS）。
+  // 删除掉出保留集的孤儿页；无论源站发多少帖，posts/ 目录恒定为 ≤ RETENTION 个文件。
   const keepIds = new Set(posts.map(p => p.id))
   let pruned = 0
   if (fs.existsSync(`${w.key}/posts`)) {
@@ -346,7 +408,7 @@ async function publishWorker(w) {
       }
     }
   }
-  if (pruned) log(`清理 ${pruned} 个孤儿文章页（仓库体积有界）`)
+  if (pruned) log(`清理 ${pruned} 个孤儿文章页（每频道恒定 ≤ ${RETENTION} 篇）`)
 
   const itemsXml = posts.map(it => {
     const link = `${siteBase}posts/${it.id}.html`
@@ -376,13 +438,16 @@ ${itemsXml}
     home_page_url: siteBase,
     feed_url: `${siteBase}rss.json`,
     description: siteDesc,
-    items: posts.map(it => ({
-      id: `${siteBase}posts/${it.id}.html`,
-      url: `${siteBase}posts/${it.id}.html`,
-      title: it.title,
-      date_published: it.datetime,
-      content_html: (it.contentHtml || '') + (it.originalUrl ? `<p><a href="${esc(it.originalUrl)}">查看 Telegram 原帖（含图片/视频）</a></p>` : ''),
-    })),
+    items: posts.map(it => {
+      const orig = it.originalUrl ? `<p><a href="${esc(it.originalUrl)}">查看 Telegram 原帖（含图片/视频）</a></p>` : ''
+      return {
+        id: `${siteBase}posts/${it.id}.html`,
+        url: `${siteBase}posts/${it.id}.html`,
+        title: it.title,
+        date_published: it.datetime,
+        content_html: (it.contentHtml || '') + orig,
+      }
+    }),
   }, null, 2))
   log('写入 rss.xml + rss.json')
   fs.writeFileSync(`${w.key}/index.html`, indexHtml(siteTitle, siteDesc, posts, siteBase))
