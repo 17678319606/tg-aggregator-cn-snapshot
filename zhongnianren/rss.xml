@@ -6,6 +6,20 @@
   <description>分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络</description>
   <generator>github-actions-sync</generator>
   <item>
+    <title>很多人不知道该怎么用好 Agent 的 /goal 功能，也就是说给 Agent 一个目标，让它长时间运行，直到目标完成为止。其实没你想的那么复杂，注意几个点：1. 你的目标是什么2. 如何验证结果3. 停止条件比如说我这两天做的一个性能优</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50228.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50228.html</guid>
+    <pubDate>Sun, 16 Aug 2026 01:08:05 GMT</pubDate>
+    <description>&lt;div class="tgme_widget_message_text js-message_text" dir="auto"&gt;很多人不知道该怎么用好 Agent 的 /goal 功能，也就是说给 Agent 一个目标，让它长时间运行，直到目标完成为止。&lt;br&gt;其实没你想的那么复杂，注意几个点：&lt;br&gt;1. 你的目标是什么&lt;br&gt;2. 如何验证结果&lt;br&gt;3. 停止条件&lt;br&gt;比如说我这两天做的一个性能优化的任务，Fable 5 帮我把视频转录性能优化了2倍多（图2），提示词很简单（图1）：&lt;br&gt;&amp;gt; /goal 帮我优化当前 cli 的转录大视频的性能，在遇到像这样大体积的视频时，需要优化转录性能，请以 Moss 模型测试这个视频（英文为主，多语言）转录，建立基准，然后分析性能瓶颈，尝试优化，直到你觉得已经没有优化空间了。注意你的主要任务是分析、编排和验证，具体任务尽可能交给 subagent（Opus5）去执行&lt;br&gt;首先用 /goal 表示这是一个需要长时间执行的任务，需要反复执行，不能运行一会就结束了。&lt;br&gt;然后给它一个视频让它先自己跑一遍转录，记录一下关键数据，建立基准。&lt;br&gt;基于转录时收集的数据，Agent 自己可以去分析原因，去自己优化，优化完成后再去跑一遍，记录数据，对照前面的基准看是更好了还是更坏了。&lt;br&gt;结束条件是它自己觉得已经没有优化空间了就结束。之所以我没给它一个具体指标，是因为我也不知道能优化多少，如果指标太容易达到，它一轮可能就结束了；如果指标太难超出物理极限也没意义，反而可能会出现为了优化去做一些极端的事情。&lt;br&gt;最后一句让它开subagent执行子任务是因为 Fable 5 太贵，全程 Fable 5 用不了多久就要额度不够了，加了这句就耐用多了，而且质量也挺好。&lt;br&gt;---&lt;br&gt;还有些时候，想到一个新的技术方案，但并不知道这方案是不是有效，那也可以让它开个worktree，去验证一下是不是靠谱，看数据是更好还是更坏，如果没提升就没必要做了。（参考图3）&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/https1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;互联网充电&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt;&lt;br&gt;&lt;a href="https://t.me/chunse1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质内容&lt;/a&gt;｜&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="https://t.me/s/https1024/50228"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
+    <title>不是哥们？？？内幕消息｜优质资源 | 优质信息</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83294.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83294.html</guid>
+    <pubDate>Sun, 16 Aug 2026 01:05:04 GMT</pubDate>
+    <description>不是哥们？？？&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt; | &lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83294"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
     <title>小而美，是AI时代最舒服的生意模式</title>
     <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17053.html</link>
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17053.html</guid>
@@ -6990,20 +7004,6 @@
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82854.html</guid>
     <pubDate>Thu, 06 Aug 2026 13:16:00 GMT</pubDate>
     <description>家族性“嫌贫爱富”现象观察一例。&lt;p&gt;&lt;a href="https://t.me/s/inside1024/82854"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>大师就是大师，知识通透内幕消息｜优质资源 | 优质信息</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82853.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82853.html</guid>
-    <pubDate>Thu, 06 Aug 2026 13:14:06 GMT</pubDate>
-    <description>大师就是大师，知识通透&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt; | &lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/82853"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>我看了很多很多的恋爱缘分 一个真实的判断： 好色又薄情又富裕的男人～～真漂亮、薄情、贪财财的女人…两者之间是天作之合！ 两者都不相信爱情，所以互相不伤害感情！ 男方好色，愿意用金钱购买快乐。 女方爱财，愿意因为金钱而提供快乐！ 两个人谈恋爱</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16710.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16710.html</guid>
-    <pubDate>Thu, 06 Aug 2026 13:13:00 GMT</pubDate>
-    <description>我看了很多很多的恋爱缘分 一个真实的判断： 好色又薄情又富裕的男人～～真漂亮、薄情、贪财财的女人…两者之间是天作之合！ 两者都不相信爱情，所以互相不伤害感情！ 男方好色，愿意用金钱购买快乐。 女方爱财，愿意因为金钱而提供快乐！ 两个人谈恋爱，各取所需！ 就像可乐遇上炸鸡，绝配！！ 而且你还会发现，这两种人组成家庭，很可能会出现热爱子女的情况！ 他们不相信爱情，但是可能热爱孩子！！ 有意思吧！！&lt;p&gt;&lt;a href="https://t.me/s/dogdairy/16710"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
   </item>
 </channel>
 </rss>
