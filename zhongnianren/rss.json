@@ -6,6 +6,20 @@
   "description": "分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络",
   "items": [
     {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83333.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83333.html",
+      "title": "• 随身包袋与内容物 (Bag & Contents): 绘制角色的日常通勤包或手拿包，并将其“打开”，展示散落在旁的物品。• 美妆与护理 (Beauty & Grooming): 展示其常用的化妆品组合（如：特定色号的口红/唇釉特写、带镜",
+      "date_published": "2026-08-16T20:56:08.000Z",
+      "content_html": "• 随身包袋与内容物 (Bag &amp; Contents): 绘制角色的日常通勤包或手拿包，并将其“打开”，展示散落在旁的物品。<br>• 美妆与护理 (Beauty &amp; Grooming): 展示其常用的化妆品组合（如：特定色号的口红/唇釉特写、带镜子的粉饼盒、香水瓶设计、护手霜）。<br>• 私密生活物件 (Lifestyle &amp; Intimate Items): 具象化角色隐藏面的物品。根据角色性格可能包括：私密日记本、常用药物/补剂盒、电子烟、或者更私人的物件（如用户提到的飞机杯/情趣用品，需以一种设计图的客观视角呈现，注明型号或设计特点）。<br>3. 风格与注释 (Style &amp; Annotations):<br>• 画风: 保持高质量的 2D 插画风格或概念设计草图风格，线条干净利落。<br>• 背景: 使用米黄色、羊皮纸或浅灰色纹理背景，营造设计手稿的氛围。<br>• 文字说明: 在每个拆解元素旁模拟手写注释，简要说明材质（如“柔软蕾丝”、“磨砂皮革”）或品牌/型号暗示（如“常用色号<br>Workflow (执行逻辑)<br>当用户提供一张图片或描述时：<br>1. 分析主体的核心特征、穿着风格及潜在性格。<br>2. 提取可拆解的一级元素（外套、鞋子、大表情）。<br>3. 脑补并设计二级深度元素（她内衣穿什么风格？她包里会装什么口红？她独处时会用什么物品？）。<br>4. 生成一张包含所有这些元素的组合图，确保透视准确，光影统一，注释清晰。<br>5. 使用中文：英文标记，高清4K HD 输出<br><br>AIGC的一切<br><a href=\"https://t.me/aigc1024\" target=\"_blank\" rel=\"noopener\">https://t.me/aigc1024</a><p><a href=\"https://t.me/s/inside1024/83333\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83331.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83331.html",
+      "title": "这个是目前大家比较喜欢的一版，人物拆解Gemini提示词:Role (角色设定)你是一位顶尖的游戏与动漫概念美术设计大师 (Concept Artist)，擅长制作详尽的角色设定图（Character Sheet）。你具备“像素级拆解”的能",
+      "date_published": "2026-08-16T20:56:07.000Z",
+      "content_html": "<div class=\"tgme_widget_message_text js-message_text\" dir=\"auto\">这个是目前大家比较喜欢的一版，人物拆解<br>Gemini提示词:<br>Role (角色设定)<br>你是一位顶尖的游戏与动漫概念美术设计大师 (Concept Artist)，擅长制作详尽的角色设定图（Character Sheet）。你具备“像素级拆解”的能力，能够透视角色的穿着层级、捕捉微表情变化，并将与其相关的物品进行具象化还原。你特别擅长通过女性角色的私密物品、随身物件和生活细节来侧面丰满人物性格与背景故事。<br>Task (任务目标)<br>根据用户上传或描述的主体形象，生成一张**“全景式角色深度概念分解图”**。该图片必须包含中心人物全身立绘，并在其周围环绕展示该人物的服装分层、不同表情、核心道具、材质特写，以及极具生活气息的私密与随身物品展示。<br>Visual Guidelines (视觉规范)<br>1. 构图布局 (Layout):<br>• 中心位 (Center): 放置角色的全身立绘或主要动态姿势，作为视觉锚点。<br>• 环绕位 (Surroundings): 在中心人物四周空白处，有序排列拆解后的元素。<br>• 视觉引导 (Connectors): 使用手绘箭头或引导线，将周边的拆解物品与中心人物的对应部位或所属区域（如包包连接手部）连接起来。<br>2. 拆解内容 (Deconstruction Details) —— 核心迭代区域:<br>• 服装分层 (Clothing Layers) [加强版]:<br>• 将角色的服装拆分为单品展示。如果是多层穿搭，需展示脱下外套后的内层状态。<br>• 新增：私密内着拆解 (Intimate Apparel): 独立展示角色的内层衣物，重点突出设计感与材质。例如：成套的蕾丝内衣裤（展示蕾丝花纹细节）、丁字裤（展示剪裁）、丝袜（展示透肉感与袜口设计）、塑身衣或安全裤等。<br>• 表情集 (Expression Sheet):<br>• 在角落绘制 3-4 个不同的头部特写，展示不同的情绪（如：冷漠、害羞、惊讶、失神、或涂口红时的专注神态）。<br>• 材质特写 (Texture &amp; Zoom) [加强版]:<br>• 选取 1-2 个关键部位进行放大特写。例如：布料的褶皱、皮肤的纹理、手部细节。<br>• 新增：物品质感特写: 增加对小物件材质的描绘，例如：口红膏体的润泽感、皮革包包的颗粒纹理、化妆品粉质的细腻感。<br>• 关联物品 (Related Items) [深度迭代版]:<br>• 此处不再局限于大型道具，需增加展示角色的“生活切片”。</div><p><a href=\"https://t.me/s/inside1024/83331\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
       "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17083.html",
       "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17083.html",
       "title": "一个人，每天从起床到睡觉，无数的碎片灌入大脑。「这些碎片来自于小红书，抖音，视频号，公众号等」其中，绝大部分都属于【贪嗔痴】或【傲慢、嫉妒、暴怒、懒惰、贪婪、暴食、色欲‌】而这些碎片犹如“垃圾食品”一样，不断影响着一个人。可，人是可以有主动",
@@ -6990,20 +7004,6 @@
       "title": "AI电商工具推荐。更多出海干货，欢迎进群交流：",
       "date_published": "2026-08-07T06:25:03.000Z",
       "content_html": "AI电商工具推荐。<br>更多出海干货，欢迎进群交流：<br><a href=\"https://discord.com/invite/sqAYvzKYp4\" target=\"_blank\" rel=\"noopener\">https://discord.com/invite/sqAYvzKYp4</a><br><br><br><a href=\"https://t.me/yunying23\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">出海赚美金</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a>｜<a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a>｜<a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a><p><a href=\"https://t.me/s/yunying23/11114\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82897.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82897.html",
-      "title": "我有一期space臭骂过，两个人天天坐地铁上下班，周末也不出去玩，还都没拿到驾照。女生看某个车厂发布会上的座椅太舒服太爽了，小红书都在夸，要找她爸要50万现金买一辆车。我说，你俩买个二手比亚迪秦都算浪费，别买新车了，一个月开不了几次，过个两",
-      "date_published": "2026-08-07T06:22:03.000Z",
-      "content_html": "我有一期space臭骂过，两个人天天坐地铁上下班，周末也不出去玩，还都没拿到驾照。<br>女生看某个车厂发布会上的座椅太舒服太爽了，小红书都在夸，要找她爸要50万现金买一辆车。<br>我说，你俩买个二手比亚迪秦都算浪费，别买新车了，一个月开不了几次，过个两三年全都折旧折没了。<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a> | <a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a><p><a href=\"https://t.me/s/inside1024/82897\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16734.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.16734.html",
-      "title": "每次看到漂亮小夫妻记录孕期，一想到怀孕是因为无套内射我就感觉好割裂..",
-      "date_published": "2026-08-07T05:17:02.000Z",
-      "content_html": "每次看到漂亮小夫妻记录孕期，一想到怀孕是因为无套内射我就感觉好割裂..<p><a href=\"https://t.me/s/dogdairy/16734\">查看 Telegram 原帖（含图片/视频）</a></p>"
     }
   ]
 }
