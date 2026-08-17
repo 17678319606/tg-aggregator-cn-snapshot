@@ -6,6 +6,13 @@
   <description>分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络</description>
   <generator>github-actions-sync</generator>
   <item>
+    <title>创业者远离腾讯云，保平安， 跟大家分享我们腾讯黑的经历：去年懒猫微服发布之前， 我们就选择了腾讯云，原因主要有两个：1. 腾讯毕竟大公司，虽然不如亚马逊，最起码有保障2.腾讯云当时全球CDN的报价狠便宜啊，最后发现我是傻逼我们用了腾讯云后，</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83337.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83337.html</guid>
+    <pubDate>Mon, 17 Aug 2026 00:12:01 GMT</pubDate>
+    <description>创业者远离腾讯云，保平安， 跟大家分享我们腾讯黑的经历：&lt;br&gt;去年懒猫微服发布之前， 我们就选择了腾讯云，原因主要有两个：&lt;br&gt;1. 腾讯毕竟大公司，虽然不如亚马逊，最起码有保障&lt;br&gt;2.腾讯云当时全球CDN的报价狠便宜啊，最后发现我是傻逼&lt;br&gt;我们用了腾讯云后，发生了几件离奇的事情，朋友们看我们是不是傻逼？&lt;br&gt;懒猫微服去年发布的时候很快做到了14个国家，今年已经20多个国家了，所以全球CDN对于全世界的用户非常重要。&lt;br&gt;最开始，我们接到某些国家的用户半夜反馈说， 我们商店访问不了，下载App很慢， 最后发现腾讯云溯源90%几率会挂，不挂的几率基本上没有，当时我们快急死了，跟腾讯云发工单，永远都是回复 “稍等我们马上看”， 2个小时候问了我们一个细节，然后继续 “稍等我们马上看”， 尼玛，就这样折腾了一晚上，问没解决， 世界的尽头不是铁岭，而是腾讯云的两个小时。&lt;br&gt;我们实在等不及了，我们自己在海外买了腾讯云的VPS做了反代，顶了几天。你说气人不？ 腾讯云自己的VPS可以正常访问，腾讯云号称牛逼的全球CDN还不如自己的VPS。&lt;br&gt;就这样，我们一边被用户骂，一边做代码迁移，一边被腾讯云气哭了， 等了2天， 最后回复的结论是， “海外CDN有30%概率不溯源是正常的。 ” 你知道吗？我第一次听到这里都气炸了， CDN没有效果， 我用CDN干嘛？ 我不知道自己在全世界建自己的服务器吗？&lt;br&gt;就这样气炸的情况下， 我们用阿里云和各种技巧顶了2天，决心替换腾讯云的时候，一个朋友说可以加腾讯云CDN负责人的微信。果然拉了一个群， 我想， 终于找到组织了，只要可以解决，就不换吧，换也要各种写代码折腾。&lt;br&gt;进了群，各种大佬一番介绍，像那么回事，大老板，二老板，三老板都在，工程师也在。我当时想，你们老板在群里督战，工程师该不敢甩锅了吧？然后就是一番解释，说清楚事情的来龙去脉，讲了为什么全球CDN对于懒猫微服用户下载应用是多么重要，咱有问没关系， 有问能否和我们一起分析，快速解决？....... 那时候我要上飞机了，一堆商务礼仪的先说了，把态度摆端正。&lt;br&gt;我下飞机的时候想，终于创业路上少了一个坑， 一打开微信，你猜怎么着？在那么多老板在的群里， 腾讯云的工程师说：“尊敬的用户您好，我们在微信群会实时响应的，您的问，请提交工单”， “提交工单后请耐心等待”....... 你知道吗？ 那时候，我觉得不是世界的尽头，而是宇宙的尽头都是你们腾讯云牛逼的工单，你都微信群了，你还让我从微信群提交工单，是不是有病？你们知道线上云服务器炸了，有多着急吗？&lt;br&gt;我从机场出来，我就给我们CTO发消息说，腾讯云这个公司没救了，老板在群里都敢这样敷衍用户，多大代价，周末加班写迁移代码都要把腾讯云换掉！最后我们花了一个周末的时间，所有线上服务都从腾讯云迁移走了。&lt;br&gt;上面就是我被腾讯云气炸的过程，友友们，你们说我是不是傻逼？我是不是活该？&lt;br&gt;我们微服现在全球20多个国家（马上快30个）用的金山云，虽然金山云产品细节差强人意，但是别人给我们建了VIP群，啥问都可以马上沟通， 哪些文件要部署CDN， 哪个域名要配置缓存策略的，群里说一声，马上就搞好了。&lt;br&gt;创业重要的不是多大队伍，而是态度，遇到事情，马上向客户承认错误，马上改，下次避免，这才是对客户负责任的态度。&lt;br&gt;&lt;br&gt;互联网从业者专属&lt;br&gt;&lt;a href="https://t.me/https1024" target="_blank"&gt;@https1024&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83337"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
     <title>产品质量维权真的还要抱团个例发出来，网上的人总有各种角度质疑否定产品存在问的可能性，只因他们自己没遇到同样的情况、或是预设的某种立场。一个例子，开箱后日常使用的一次性手套出现不明脏污，遇到问了如何觉醒先知能力提前录好开箱视频？@inside</title>
     <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83336.html</link>
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83336.html</guid>
@@ -6997,13 +7004,6 @@
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.82900.html</guid>
     <pubDate>Fri, 07 Aug 2026 08:34:05 GMT</pubDate>
     <description>记者严肃地问普京：我国访问量最大的是色情网站，我们会对这种危险行为采取措施吗？&lt;br&gt;普京的回答相当搞笑。&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt; | &lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/82900"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>车贴纸是个好生意吗？低客单价，低复购，听上去就没什么前途。你要是这么想，这家叫做Invalid的独立站第一个就不服了。通过把普通的纸质贴纸改装成能发光的LED材质。产品不仅一下子高大上起来了，提高了客单价，还让每个消费者出门开车的时候都能成</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11115.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11115.html</guid>
-    <pubDate>Fri, 07 Aug 2026 08:29:01 GMT</pubDate>
-    <description>车贴纸是个好生意吗？&lt;br&gt;低客单价，低复购，听上去就没什么前途。&lt;br&gt;你要是这么想，这家叫做Invalid的独立站第一个就不服了。&lt;br&gt;通过把普通的纸质贴纸改装成能发光的LED材质。&lt;br&gt;产品不仅一下子高大上起来了，提高了客单价，还让每个消费者出门开车的时候都能成为那条街上最靓的仔。&lt;br&gt;配合上一些吸睛的文字贴纸，无声无息的就把口碑传播给做了，广告钱都省了。&lt;br&gt;再考虑到美国人每个家庭都好几辆车，如此之大的市场规模，即使完全不做复购，也够我们发财的了。&lt;br&gt;更重要的是，在独立站获得了这么一大批有购买力的用户以后，那在后端，通过私域，不管是卖其他更高客单价的汽车配件，还是搞什么车友会社群，甚至是帮一些电动车厂家打广告，不都是轻而易举的就把钱给挣了嘛。&lt;br&gt;老老实实卖货，有几个发财的？&lt;br&gt;别被商业模式限制了你的想象力！&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/yunying23" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;出海赚美金&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt;｜&lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;｜&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/yunying23/11115"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
   </item>
 </channel>
 </rss>
