@@ -6,6 +6,20 @@
   <description>分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络</description>
   <generator>github-actions-sync</generator>
   <item>
+    <title>ocal_point": "One hand or foot is reaching towards the camera lens, creating a playful forced perspective effect where t</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83571.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83571.html</guid>
+    <pubDate>Fri, 21 Aug 2026 20:56:05 GMT</pubDate>
+    <description>ocal_point": "One hand or foot is reaching towards the camera lens, creating a playful forced perspective effect where the limb appears larger and close-up."&lt;br&gt;},&lt;br&gt;"camera_logic": {&lt;br&gt;"perspective": "Shot from a [INSE_ANGLE_HERE] using a 24mm wide-angle lens.",&lt;br&gt;"depth": "Shallow depth of field, sharp focus on the character's eyes, soft blurred background."&lt;br&gt;},&lt;br&gt;"environment": {&lt;br&gt;"setting": "Simple studio background or consistent environment from reference, soft studio lighting."&lt;br&gt;},&lt;br&gt;"technical_specs": {&lt;br&gt;"style": "K-pop aesthetic, vibrant colors, realistic texture, 8k resolution, raw photography.",&lt;br&gt;"negative_prompt": [&lt;br&gt;"distortion on face", "bad fingers", "extra limbs", "mutated hands",&lt;br&gt;"blurry eyes", "drawing", "cartoon", "cgi", "too much fish-eye"&lt;br&gt;]&lt;br&gt;}&lt;br&gt;}&lt;br&gt;}&lt;br&gt;&lt;br&gt;AIGC的一切&lt;br&gt;&lt;a href="https://t.me/aigc1024" target="_blank" rel="noopener"&gt;https://t.me/aigc1024&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83571"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
+    <title>🔥这个摄影棚效果太赞了，视觉冲击，镜头景深都很足够！在原贴启发下转换成 json 格式，支持镜头角度跟姿势控制参数😏第一张是真的喜欢！😍使用方法：从 camera_angle 挑选一个填入 [INSE_ANGLE_HERE]从 cha</title>
+    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83569.html</link>
+    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83569.html</guid>
+    <pubDate>Fri, 21 Aug 2026 20:56:04 GMT</pubDate>
+    <description>&lt;div class="tgme_widget_message_text js-message_text" dir="auto"&gt;&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F94A5.png')"&gt;&lt;b&gt;🔥&lt;/b&gt;&lt;/i&gt;这个摄影棚效果太赞了，视觉冲击，镜头景深都很足够！在原贴启发下转换成 json 格式，支持镜头角度跟姿势控制参数&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F988F.png')"&gt;&lt;b&gt;😏&lt;/b&gt;&lt;/i&gt;&lt;br&gt;第一张是真的喜欢！&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F988D.png')"&gt;&lt;b&gt;😍&lt;/b&gt;&lt;/i&gt;&lt;br&gt;使用方法：&lt;br&gt;从 camera_angle 挑选一个填入 [INSE_ANGLE_HERE]&lt;br&gt;从 character_pose 挑选一个填入 [INSE_POSE_HERE]&lt;br&gt;提示词&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9187.png')"&gt;&lt;b&gt;👇&lt;/b&gt;&lt;/i&gt;&lt;br&gt;{&lt;br&gt;"project_settings": {&lt;br&gt;"type": "Dynamic Perspective Portrait",&lt;br&gt;"mode": "Image-to-Image / ControlNet Reference",&lt;br&gt;"description": "Keeps character consistent while changing pose and camera angle with forced perspective."&lt;br&gt;},&lt;br&gt;"user_selection": {&lt;br&gt;"//_instruction": "CHOOSE ONE option for each category below to generate your prompt",&lt;br&gt;"camera_angle": "{Low Angle Worm's-eye View | High Angle Bird's-eye View | Eye-Level Close Up | Dutch Angle (Tilted)}",&lt;br&gt;"character_pose": "{Deep Squatting | Standing Power Pose | Sitting Cross-legged | Dynamic Running | Leaning Forward}"&lt;br&gt;},&lt;br&gt;"prompt_structure": {&lt;br&gt;"subject_anchor": {&lt;br&gt;"instruction": "A high-quality wide-angle photo of [SAME CHARACTER AS REFERENCE IMAGE]",&lt;br&gt;"outfit": "wearing [SAME OUTFIT AS REFERENCE]"&lt;br&gt;},&lt;br&gt;"action_logic": {&lt;br&gt;"description": "The character is [INSE_POSE_HERE], actively interacting with the camera.",&lt;br&gt;"f&lt;/div&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83569"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
+  </item>
+  <item>
     <title>最近想清楚了一件大事：不花钱就赚不到钱</title>
     <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17280.html</link>
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.17280.html</guid>
@@ -6990,20 +7004,6 @@
     <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50148.html</guid>
     <pubDate>Wed, 12 Aug 2026 10:21:21 GMT</pubDate>
     <description>马老板的AI老贵了&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09FA491.png')"&gt;&lt;b&gt;🤑&lt;/b&gt;&lt;/i&gt; 都是百美元起步的&lt;br&gt;&lt;a href="https://t.me/https1024" target="_blank"&gt;@https1024&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/https1024/50148"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>纯男性社区“大蓝树”正式上线对标小红书你们觉得能活过一个月么？😂😂😂出海赚美金｜优质资源｜优质信息｜内幕消息纯男性社区“大蓝树”正式上线对标小红书你们觉得能活过一个月么？😂😂😂出海赚美金｜优质资源｜优质信息｜内幕消息</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11162.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/yunying23.11162.html</guid>
-    <pubDate>Wed, 12 Aug 2026 10:19:05 GMT</pubDate>
-    <description>&lt;div class="tgme_widget_message_text js-message_text" dir="auto"&gt;纯男性社区“大蓝树”正式上线&lt;br&gt;对标小红书&lt;br&gt;你们觉得能活过一个月么？&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9882.png')"&gt;&lt;b&gt;😂&lt;/b&gt;&lt;/i&gt;&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9882.png')"&gt;&lt;b&gt;😂&lt;/b&gt;&lt;/i&gt;&lt;i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9882.png')"&gt;&lt;b&gt;😂&lt;/b&gt;&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/yunying23" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;出海赚美金&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt;｜&lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;｜&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="https://t.me/s/yunying23/11162"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
-  </item>
-  <item>
-    <title>海底捞被曝出一个内部潜规则——「点炮制度」。前员工爆料：高管对底层员工的考核方式不是工作表现，而是一套「顺从文化」谁表现得贴合高层意图，谁就升职。海底捞服务好的背后是一整套细致的心理管理体系。你上一次去海底捞还会去吗？内幕消息｜优质资源 |</title>
-    <link>https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83131.html</link>
-    <guid isPermaLink="true">https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83131.html</guid>
-    <pubDate>Wed, 12 Aug 2026 10:16:02 GMT</pubDate>
-    <description>海底捞被曝出一个内部潜规则——「点炮制度」。&lt;br&gt;前员工爆料：高管对底层员工的考核方式&lt;br&gt;不是工作表现，而是一套「顺从文化」&lt;br&gt;谁表现得贴合高层意图，谁就升职。&lt;br&gt;海底捞服务好的背后&lt;br&gt;是一整套细致的心理管理体系。&lt;br&gt;你上一次去海底捞还会去吗？&lt;br&gt;&lt;br&gt;&lt;a href="https://t.me/inside1024" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;内幕消息&lt;/a&gt;｜&lt;a href="https://t.me/meiriyishu" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质资源&lt;/a&gt; | &lt;a href="https://t.me/chunse1024/8467" target="_blank" rel="noopener" onclick="return confirm('Open this link?\n\n'+this.href);"&gt;优质信息&lt;/a&gt;&lt;p&gt;&lt;a href="https://t.me/s/inside1024/83131"&gt;查看 Telegram 原帖（含图片/视频）&lt;/a&gt;&lt;/p&gt;</description>
   </item>
 </channel>
 </rss>
