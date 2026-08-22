@@ -6,6 +6,27 @@
   "description": "分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络",
   "items": [
     {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50383.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50383.html",
+      "title": "发现一个挺适合多 VPS / NAS 玩家的 Docker 管理面板：Dockhand。可以把分散在不同机器上的容器、Compose Stack、日志和更新，统一放到一个 Web 后台里管。还内置了 Trivy / Grype 漏洞扫描，更",
+      "date_published": "2026-08-22T18:21:25.000Z",
+      "content_html": "发现一个挺适合多 VPS / NAS 玩家的 Docker 管理面板：Dockhand。<br>可以把分散在不同机器上的容器、Compose Stack、日志和更新，统一放到一个 Web 后台里管。还内置了 Trivy / Grype 漏洞扫描，更新镜像前会先检查一遍，降低翻车风险。<br>免费版就支持多主机、OIDC/MFA、Git 部署、外部密钥和备份。如果你觉得 Portainer 有点重，可以看看这个Dockhand Docker 管理面板。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F9189.png')\"><b>👉</b></i><br><a href=\"https://t.me/https1024\" target=\"_blank\">@https1024</a><p><a href=\"https://t.me/s/https1024/50383\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50382.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50382.html",
+      "title": "Dockhand is a self-hosted Docker management panel and Portainer alternative for multi-host Docker environments, with Com",
+      "date_published": "2026-08-22T18:21:22.000Z",
+      "content_html": "Dockhand is a self-hosted Docker management panel and Portainer alternative for multi-host Docker environments, with Compose and Git deployments, OIDC/MFA, and Trivy/Grype vulnerability scanning.<br><a href=\"https://t.me/https1024\" target=\"_blank\">@https1024</a><p><a href=\"https://t.me/s/https1024/50382\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50381.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50381.html",
+      "title": "X的搜索开始接入grok了耶🤤@",
+      "date_published": "2026-08-22T18:21:21.000Z",
+      "content_html": "X的搜索开始接入grok了耶<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA4A4.png')\"><b>🤤</b></i><br><a href=\"https://t.me/https1024\" target=\"_blank\">@https1024</a><p><a href=\"https://t.me/s/https1024/50381\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
       "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50380.html",
       "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.50380.html",
       "title": "把 NixOS 和 Nix-Darwin 的配置收进一份仓库，一台机器按需切 Niri、Plasma 6、GNOME 三套桌面。",
@@ -6983,27 +7004,6 @@
       "title": "男人嘛，精力充沛的时候总得找点地方发泄……这种“精力充沛”的男朋友，各位姐妹你们顶得住吗？👫中年指南 ｜优质资源｜优质信息｜内幕消息",
       "date_published": "2026-08-13T04:51:01.000Z",
       "content_html": "男人嘛，精力充沛的时候总得找点地方发泄……<br>这种“精力充沛”的男朋友，各位姐妹你们顶得住吗？<br><br><a href=\"https://t.me/dogdairy\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\"><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F91AB.png')\"><b>👫</b></i>中年指南</a> ｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a>｜<a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a>｜<a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a><p><a href=\"https://t.me/s/dogdairy/16955\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83171.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83171.html",
-      "title": "看到一个很有意思的数据对比：中国市场避孕套的销售额去年是156亿人民币，同比下降17%，相较2019年的高点，更是萎缩了1/4以上；同期中国市场情趣用品的销售额增长却高到离谱，每年稳定增长15%，去年交易额接近2000亿人民币，比起2019",
-      "date_published": "2026-08-13T04:44:02.000Z",
-      "content_html": "看到一个很有意思的数据对比：<br>中国市场避孕套的销售额去年是156亿人民币，同比下降17%，相较2019年的高点，更是萎缩了1/4以上；<br>同期中国市场情趣用品的销售额增长却高到离谱，每年稳定增长15%，去年交易额接近2000亿人民币，比起2019年翻了个倍。<br>报告结论很扎心，就一句：<br>「这代人的性生活，不需要两个人了。」<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a> | <a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a><p><a href=\"https://t.me/s/inside1024/83171\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83170.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.83170.html",
-      "title": "中年人低成本高质量过日子的10个tips1. 把每天看书的时间提高到2小时以上，多多益善。为了养成随时看书的习惯，厕所、床头、阳台都放上书，电子书随身携带；这意味着你几乎无法刷短视频和看新闻了。2. 关注几位高质量高密度输出的文字类博主和播",
-      "date_published": "2026-08-13T03:47:01.000Z",
-      "content_html": "中年人低成本高质量过日子的10个tips<br><br>1. 把每天看书的时间提高到2小时以上，多多益善。为了养成随时看书的习惯，厕所、床头、阳台都放上书，电子书随身携带；这意味着你几乎无法刷短视频和看新闻了。<br><br>2. 关注几位高质量高密度输出的文字类博主和播客。如果某位博主的输出总能给你带来增量信息，那么他的认知体系应该是高出你一两个维度。你一定要抓住他，定期整理研究他的文字和推荐书目，把他扒光吃净，直到你和他处于同一个维度。<br><br>3. 乐刻、17%、超级猩猩的会员卡都办上，bp、bc、瑜伽、普拉提各种团课随时上，锻炼社交两不误，一年花不到3000块，腰酸背痛颈椎疼全无踪，把去医院和推拿店的钱全省回来了。<br><br>4. 每周末参加一场陌生人线下活动，我一般是商业类、读书会、户外运动较多，少量演出和探店，主要目的是和不同年龄段、不同背景的人交流，就当是社会观察了，及时认知调整坐标系。如果没有好的活动，干脆自己组织。<br><br>5. 或者就和家人朋友到户外和citywalk，在草地上躺半天，无脑瞎逛，极度放松。在此要夸夸南京这座城市，好玩儿的地方真挺多，永远逛不够。<br><br>6. 关心理财和投资，花一定时间和成本认真研究这件事，用投资/消费思维审视对待每一笔钱，直到自洽，直到宠辱不惊，修炼内心直到德能配位。<br><br>7. 把做家务当作一种休息和放松。晚饭后半小时，客厅放播客当成背景音，该洗洗该刷刷，促进消化，内心安静，时不时还能带来灵感。个人喜欢的播客都能听10遍以上。<br><br>8. 每天都去商超看看新鲜蔬菜水果，不要大量囤积食物，基本不吃深加工食物，咱中国人吃菜讲究新鲜这一点还真是过日子的精髓。且买菜同样也是一种休息。<br><br>9. 养成把自己的思考发表在社交媒体上的习惯，只用一个标准衡量：自己写的东西值不值得以后拿给孩子看，帮助指导他的人生——没错儿，就当作家书家训来写。<br><br>10. 遇到优秀的人，想方设法和TA发生交集，遇到优秀的年轻人不要吝啬关心，让优秀的伙伴充盈到自己的生活中。<p><a href=\"https://t.me/s/inside1024/83170\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24305.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24305.html",
-      "title": "小个体赚钱，真的不需要学那么多，也不需要做那么多。认知上吃透这四个词：异常值、痛点、闭环、杠杆，行动上做到这四件事：专学习、找对标并像素级模仿、选品或封装资源为产品、持续出摊。副业搞钱 | 出海赚美金 | 内幕消息｜优质内容",
-      "date_published": "2026-08-13T03:43:01.000Z",
-      "content_html": "小个体赚钱，真的不需要学那么多，也不需要做那么多。认知上吃透这四个词：异常值、痛点、闭环、杠杆，行动上做到这四件事：专学习、找对标并像素级模仿、选品或封装资源为产品、持续出摊。<br><br><a href=\"https://t.me/text1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">副业搞钱</a> | <a href=\"https://t.me/yunying23\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">出海赚美金</a> | <a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/chunse1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质内容</a><p><a href=\"https://t.me/s/text1024/24305\">查看 Telegram 原帖（含图片/视频）</a></p>"
     }
   ]
 }
