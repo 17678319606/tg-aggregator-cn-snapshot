@@ -1,0 +1,97 @@
+name: snapshot-sync
+
+# 并发串行化：同一时刻只跑一个同步，避免多次提交/推送互相覆盖，
+# 也避免与 housekeeping.yml 的历史压缩（force-push）撞车导致丢失提交。
+concurrency:
+  group: tg-aggregator-sync
+  cancel-in-progress: false
+
+on:
+  schedule:
+    # 兜底定时：每 15 分钟一次（public 仓库 Actions 免费，提频不增成本）。
+    # 主要「即时同步」由下列两个通道触发，比定时更准时：
+    #   1) CF 源站（Worker）内容更新时 repository_dispatch 主动推送（内容一变立即同步）
+    #   2) 你的 1H1G 宝塔服务器定时调 GitHub API 触发（server/trigger-sync.sh，可精确到分钟）
+    - cron: '3,18,33,48 * * * *'
+  workflow_dispatch: {}    # 允许在 Actions 页面手动触发一次
+  repository_dispatch:
+    types: [snapshot]      # 源站(BroadcastChannel Worker) 或 你的服务器 内容更新时主动推送触发即时同步
+
+permissions:
+  contents: write          # 允许把生成的快照推送回本仓库（含移动 latest 标签）
+  issues: write            # 允许同步异常时自动开/关监控 Issue
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # 需要完整历史才能移动标签 / housekeeping 压缩
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 安装依赖（cheerio 解析频道页 + nodemailer 发送失败邮件告警）
+        run: npm install cheerio@1 nodemailer
+      - name: 生成静态快照（直接抓取 t.me/s/<频道>，海外 Runner 可直连；纯文本 RSS，不重托管媒体）
+        env:
+          # 以下均为可选：不配置则使用 sync.mjs 内置默认值（企业微信 webhook 已内置；邮件需配置 SMTP 才发）
+          WX_WORK_WEBHOOK: ${{ secrets.WX_WORK_WEBHOOK }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
+          ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+        run: node sync.mjs
+      - name: 提交、推送并更新 latest 标签
+        if: success()       # 仅当快照生成步骤无意外异常时才提交
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          # 仅在有实际变更时提交，避免空提交堆积历史
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+          else
+            git commit -m "snapshot: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+            git tag -f latest
+            git push -f origin latest
+          fi
+      - name: 清除 jsDelivr @latest 缓存（可选备用镜像即时刷新）
+        if: success()
+        run: |
+          for f in 123yunpan/rss.xml 123yunpan/rss.json zhongnianren/rss.xml zhongnianren/rss.json; do
+            curl -sS "https://purge.jsdelivr.net/gh/17678319606/tg-aggregator-cn-snapshot@latest/$f" || true
+          done
+      - name: 同步异常监控（源站挂掉/抓取失败时自动开Issue+让run变红；恢复自动关单）
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let status;
+            try { status = JSON.parse(fs.readFileSync('/tmp/sync-status.json','utf8')); }
+            catch (e) { core.setFailed('未找到同步状态文件'); return; }
+            const failed = status.failed || [];
+            const ok = status.ok || [];
+            const title = '\u{1F6A8} tg-aggregator \u540C\u6B65\u5F02\u5E38';
+            const body = `同步状态 @ ${status.time}\n\n✅ 正常源站: ${ok.join(', ') || '无'}\n❌ 异常源站: ${failed.join(', ') || '无'}\n\n本告警由 GitHub Actions 自动生成；源站恢复后下次成功运行会自动关闭。`;
+            const { owner, repo } = context.repo;
+            const issues = await github.rest.issues.listForRepo({ owner, repo, state: 'open', per_page: 100 });
+            const existing = issues.data.find(i => i.title === title && !i.pull_request);
+            if (failed.length) {
+              if (existing) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `仍异常 @ ${status.time}：${failed.join(', ')}` });
+              } else {
+                await github.rest.issues.create({ owner, repo, title, body, labels: ['sync-monitor'] });
+              }
+              core.setFailed('源站异常: ' + failed.join(', '));
+            } else if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `✅ 已恢复 @ ${status.time}，所有源站正常。` });
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: 'closed' });
+            }
