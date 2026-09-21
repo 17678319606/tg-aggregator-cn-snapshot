@@ -6,6 +6,62 @@
   "description": "分享出海经验、赚美金、运营技巧、小红书运营、网赚项目等。内容来源网络",
   "items": [
     {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.51935.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/https1024.51935.html",
+      "title": "很多 PDF 明明自带文字层，却还在傻傻跑 OCR，不仅慢，还白烧 Token 和算力。Firecrawl 开源了一个很实用的工具 pdf-inspector，专门在 PDF 进入 AI 工作流之前先做一次“体检”。它会在本地快速判断 PD",
+      "date_published": "2026-09-21T22:15:03.000Z",
+      "content_html": "很多 PDF 明明自带文字层，却还在傻傻跑 OCR，不仅慢，还白烧 Token 和算力。<br>Firecrawl 开源了一个很实用的工具 pdf-inspector，专门在 PDF 进入 AI 工作流之前先做一次“体检”。<br>它会在本地快速判断 PDF 哪些内容能直接提取、哪些页面或区域真的需要 OCR。能读的直接转 Markdown，缺失文本的部分才交给 OCR，避免整份文档重复识别。<br>按照项目公布的数据，约 54% 的 PDF 根本不需要 OCR。对于做 RAG、AI 知识库、文档问答和批量 PDF 处理的人来说，能省下不少时间和成本。<br>GitHub：<br><a href=\"https://github.com/firecrawl/pdf-inspector\" target=\"_blank\" rel=\"noopener\">https://github.com/firecrawl/pdf-inspector</a><br><br><a href=\"https://t.me/https1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">互联网充电</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a><br><a href=\"https://t.me/chunse1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质内容</a>｜<a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a><p><a href=\"https://t.me/s/https1024/51935\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18605.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18605.html",
+      "title": "你有没有想过，对一个人来说，到底什么是真正的自由？挣很多钱，有很多空余时间，就是真正的自由吗？那为什么那么多人Fire以后还是会觉得无比空虚？黑格尔和恩格斯都尝试回答过这个问：如果世界有规律，人也受自然、社会和历史条件制约，人的自由还存在吗",
+      "date_published": "2026-09-21T21:45:00.000Z",
+      "content_html": "你有没有想过，对一个人来说，到底什么是真正的自由？<br>挣很多钱，有很多空余时间，就是真正的自由吗？那为什么那么多人Fire以后还是会觉得无比空虚？<br>黑格尔和恩格斯都尝试回答过这个问：<br>如果世界有规律，人也受自然、社会和历史条件制约，人的自由还存在吗？<br>如果说“自由就是想怎样就怎样”，它似乎与因果规律冲突；如果说“一切都由条件决定”，人又似乎只能听天由命。<br>黑格尔要打破这个二选一。他认为，任性选择不等于自由。一个人不知道洪水怎样形成，站在河边“自由地”决定往哪里跑，其实处处受洪水摆布；理解水势、修好河道和堤防后，他仍不能命令水停止流动，却能让水按预期发挥作用。<br>黑格尔说，必然性在尚未被理解时才是“盲目的”；自由不是把必然性消灭，而是理解它，使行动不再只是被动反应。<br>他还进一步追问：这种自由怎样落实在法律和社会制度中，而不只停留在个人心里？<br>恩格斯把回答重点转向物质生产和社会组织。<br>人类借科学认识自然规律，能够造机器、提高生产力；可人们共同造成的经济危机、竞争和贫困，又像不受控制的自然灾害一样反过来支配人。为什么人能控制机器，却控制不了自己建立的生产关系？<br>恩格斯认为，只有认识这些社会力量如何运作，并有意识地组织生产，人才能减少这种“自己创造的东西反过来统治自己”的处境。<br>两人的共同点是：自由不是没有约束，而是从被未知力量推着走，变成理解条件、能够有目的地行动。<br>任正非在企业管理的场景下理解“自由”。<br>一家公司的资金、技术、人才和市场变化都是真实约束，管理者不可能宣布它们不存在。但如果企业只靠一个能人拍板、出了问靠领导救火，它就在被这些条件推着走；如果摸清业务规律，把经验沉淀为流程、激励和应急机制，它就多了一分主动权。<br>前者是“必然王国”，后者是“自由王国”。这样的王国不是形成了就会定型了，因为企业总会遇到新场景，总要花时间摸清规律，总在追求自由王国的路上。<br>放到个人上，我觉得自由就是通过最大限度的调研、理解，掌握了足够多信息，尽可能消除了不确定性后，自己能够做出主动选择。<br>你不是被逼着Fire，你是想清楚了why，搞清楚了how，最后主动选择了Fire，大概才能体会到真正畅快的自由。<p><a href=\"https://t.me/s/dogdairy/18605\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85499.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85499.html",
+      "title": "1. 给 AI 一个身份角色即视角，视角决定深度。 当你给 AI 设定一个明确的专业身份，它会调用相关领域的知识体系、思维方式和表达习惯。一个\"资深商业分析师\"和一个\"普通助手\"给出的答案，深度和专业性完全不同。别这样问：帮我写份竞品分析报",
+      "date_published": "2026-09-21T20:56:00.000Z",
+      "content_html": "1. 给 AI 一个身份<br>角色即视角，视角决定深度。 当你给 AI 设定一个明确的专业身份，它会调用相关领域的知识体系、思维方式和表达习惯。一个\"资深商业分析师\"和一个\"普通助手\"给出的答案，深度和专业性完全不同。<br>别这样问：<br>帮我写份竞品分析报告<br>试试这样：<br>你是一位资深商业分析师，擅长 SaaS 行业的竞品研究。帮我分析 Notion 和 Coda 的产品策略差异，重点对比商业模式、目标用户和核心功能，最后给出对我们产品的启示<br><br>AIGC的一切<br><a href=\"https://t.me/aigc1024\" target=\"_blank\" rel=\"noopener\">https://t.me/aigc1024</a><p><a href=\"https://t.me/s/inside1024/85499\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24845.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24845.html",
+      "title": "🔥 查理·芒格：你必须一生复利的5件小事（改命级干货）有人问99岁的芒格：你经历破产、失明、丧子，最后怎么还能年赚5000万美元？答案藏在他用血泪换来的10个习惯里。今天先上5个——做到3个能翻身，做到5个能改命。1️⃣ 读书不是收集信息",
+      "date_published": "2026-09-21T20:33:55.000Z",
+      "content_html": "<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94A5.png')\"><b>🔥</b></i> 查理·芒格：你必须一生复利的5件小事（改命级干货）<br>有人问99岁的芒格：你经历破产、失明、丧子，最后怎么还能年赚5000万美元？<br>答案藏在他用血泪换来的10个习惯里。今天先上5个——做到3个能翻身，做到5个能改命。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/31E283A3.png')\"><b>1️⃣</b></i> 读书不是收集信息，是拆解逻辑<br>普通人刷短视频喂饱求知欲，脑子全是碎片；<br>芒格把书当工具箱，读一本就往里放一把“能解决问的扳手”。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29C85.png')\"><b>✅</b></i> 认知浓度，才是你和同龄人拉开差距的唯一燃料。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/32E283A3.png')\"><b>2️⃣</b></i> 身体不行，一切归零<br>40多岁因白内障差点失明，他从此定下铁律：不熬夜、饮食节制、每天散步。<br>不是为长寿，是为保持清醒大脑和稳定执行力。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29AA0.png')\"><b>⚠️</b></i> 30岁的身体背着50岁的负债，等想发力时早已力不从心。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/33E283A3.png')\"><b>3️⃣</b></i> 研究失败比研究成功更重要<br>“如果我知道我会死在哪里，那我永远不去那里。”<br>他的投资清单全写“不做什么”。破产只有三种形式：酒精、女人、杠杆。<br>普通人眼里只有赢，一次风浪过来，十年积累全打水漂。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/34E283A3.png')\"><b>4️⃣</b></i> 接受自己的无知（最反人性也最管用）<br>人类大脑天生充满偏见和过度自信。芒格说：承认自己愚蠢并为此感到庆幸。<br>他建立“双轨分析”：先理性判断对不对，再分析自己是不是被情绪带偏。<br>真正的智慧不是无所不知，是知道自己不知道什么。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/35E283A3.png')\"><b>5️⃣</b></i> 远离那些让你变蠢的人<br>成功不是靠大量人脉，而是靠不跟哪些人来往。<br>凡是让你焦虑、嫉妒、自卑或愤怒的关系，一律切断。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F8CB1.png')\"><b>🌱</b></i> 你的水平，就是你最常接触的五个人的平均水平。<br>这5件事平淡无奇，但连成一片就会互相支撑：<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F939A.png')\"><b>📚</b></i> 读书让你清楚 → <i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F92AA.png')\"><b>💪</b></i> 身体好让你有本钱 → <i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F9AAB.png')\"><b>🚫</b></i> 研究失败让你不失败 → <i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA7A0.png')\"><b>🧠</b></i> 承认愚蠢让你持续进步 → <i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94AA.png')\"><b>🔪</b></i> 远离消耗你的人让你活得干净。<br>努力是一阵子的狠劲，习惯是一辈子的轨道。<br>前者让你看起来很忙，后者让你真正变强。<br><br><a href=\"https://t.me/text1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">副业搞钱</a> | <a href=\"https://t.me/yunying23\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">出海赚美金</a> | <a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/chunse1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质内容</a><p><a href=\"https://t.me/s/text1024/24845\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24844.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/text1024.24844.html",
+      "title": "2000年前的儒家心法，专治现代人的精神内耗你以为儒家文化就是“之乎者也”和过时的尊卑秩序？其实，当你把那些时代局限的壳剥掉，里面藏着一套关于自我管理、认知成长、人际关系和人生抉择的方法论——而且，对身处高不确定性的当代年轻人来说，依然非常",
+      "date_published": "2026-09-21T20:33:40.000Z",
+      "content_html": "2000年前的儒家心法，专治现代人的精神内耗<br>你以为儒家文化就是“之乎者也”和过时的尊卑秩序？<br>其实，当你把那些时代局限的壳剥掉，里面藏着一套关于自我管理、认知成长、人际关系和人生抉择的方法论——而且，对身处高不确定性的当代年轻人来说，依然非常能打。<br>今天就来拆解这份穿越两千年的“实操手册”。<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F9187.png')\"><b>👇</b></i><br>一、向内安顿：对抗内耗的4个功夫<br>当代人的焦虑，大多是因为注意力被外界牵着走——内卷、比较、自我怀疑……<br>儒家的核心心法，恰恰是把注意力收回来。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94B8.png')\"><b>🔸</b></i> 反求诸己<br>遇到挫折，第一反应不是甩锅环境，而是问自己：我能改进什么？<br>不是自我贬低，而是把精力从“改变别人”收回到“掌控自己”。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94B8.png')\"><b>🔸</b></i> 慎独克己<br>没人盯着的时候，你还会摆烂吗？<br>克制短期欲望、不被算法牵着走，在独处时守住主动选择——这才是真正的自由。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94B8.png')\"><b>🔸</b></i> 三省吾身<br>每天花几分钟复盘：言行是否妥当？有没有失信？是否尽心？<br>信息过载时代，这是成本最低的迭代方式。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F94B8.png')\"><b>🔸</b></i> 中庸守界<br>中庸≠和稀泥，而是不走极端。<br>不透支身体去内卷，也不彻底躺平；情绪上不狂喜不暴怒，在张力中找平衡点。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F92A1.png')\"><b>💡</b></i> 核心不是压抑自我，而是把注意力从外界收回自身可控的行动上。<br>二、面向成长：终身学习的完整闭环<br>儒家说的“学习”，从来不只是读书，而是一套认知方法论。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29C85.png')\"><b>✅</b></i> 学而时习之——重在“习”，即践行。道理要落地验证，拒绝纸上谈兵。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29C85.png')\"><b>✅</b></i> 知之为知之——承认不懂，才能避开“不懂装懂”的认知陷阱和信息茧房。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29C85.png')\"><b>✅</b></i> 博学→审问→慎思→明辨→笃行——这是一条完整的决策链条：广泛涉猎、审慎提问、独立思考、辨别真伪、踏实行动。在谣言满天飞的网络时代，这套判断训练极其实用。<br>三、推己及人：低成本维护健康关系<br>人际摩擦是普遍痛点，儒家的方案是：用尊重和边界降低冲突成本。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA49D.png')\"><b>🤝</b></i> 己所不欲，勿施于人<br>——换位思考+边界感最古老的表达。把自己讨厌的方式，从关系中移除。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA49D.png')\"><b>🤝</b></i> 忠恕之道<br>忠 = 待人以诚、尽好本分；恕 = 包容差异、不苛责他人。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA49D.png')\"><b>🤝</b></i> 和而不同<br>允许观点分歧，不必强求一致。在多元碰撞的时代，这是“既坚持自我、又不撕裂关系”的平衡支点。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA49D.png')\"><b>🤝</b></i> 礼敬有度<br>用分寸感维护长期关系，不是虚伪客套，而是让彼此都舒服。<br>四、安身立命：在不确定的世界里稳住自己<br>面对择业、成败、意义感困惑，儒家提供的是价值锚点，不是标准答案。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29A93.png')\"><b>⚓️</b></i> 义利之辨：利益面前先问一句——这合乎道义吗？给每次选择装一个底线标尺。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29A93.png')\"><b>⚓️</b></i> 尽人事，听天命：全力做好可控之事，接纳不可控的结果。考试、求职、失败带来的精神重压，这句能卸掉大半。<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/E29A93.png')\"><b>⚓️</b></i> 士不可以不弘毅，任重而道远：承认成长是漫长的，接受过程艰辛，不被“速成幻象”带节奏——这就是长期主义。<br>五、最后说两句<br>我们继承的，从来不是等级礼制，而是一套关于心性、认知、关系与选择的方法论。<br>在不确定性加剧的今天，儒家智慧提供的不是标准答案，而是一套帮你：<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA798.png')\"><b>🧘</b></i> 稳住内心<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA7A0.png')\"><b>🧠</b></i> 理性行事<br><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F8FA0.png')\"><b>🏠</b></i> 安顿自我<br>的可操作架构。<br>这才是它穿越两千年，依然能用的当代价值。<br><br><a href=\"https://t.me/text1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">副业搞钱</a> | <a href=\"https://t.me/yunying23\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">出海赚美金</a> | <a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/chunse1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质内容</a><p><a href=\"https://t.me/s/text1024/24844\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85498.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85498.html",
+      "title": "你无意间撞见过什么秘密？公司里有两个零零后女孩非常漂亮。领导经常带着她们去应酬老油腻客户。前两天的饭局上，油腻男拿出两万现金。要两个小仙女猜拳，谁赢了给谁。仙女a高冷不屑，直接拒绝：我不要，我弃权。仙女b抬起手又放下，一脸失望看向油腻男客户",
+      "date_published": "2026-09-21T20:10:01.000Z",
+      "content_html": "你无意间撞见过什么秘密？<br>公司里有两个零零后女孩非常漂亮。<br>领导经常带着她们去应酬老油腻客户。<br>前两天的饭局上，油腻男拿出两万现金。<br>要两个小仙女猜拳，谁赢了给谁。<br>仙女a高冷不屑，直接拒绝：我不要，我弃权。<br>仙女b抬起手又放下，一脸失望看向油腻男客户。<br>油腻男客户感觉没面子，拿起钱直接扔给仙女b，她既然不稀罕，那就直接给你。<br>仙女b开朗又爱财，说了句谢谢，把钱装进了包包。<br>油腻男客户气不过，又拿出五万现金放在桌子上。<br>要两位仙女现场斗殴，谁打赢了，钱就归谁。<br>仙女a仍然一脸不屑：我不需要这个钱，我弃权。<br>油腻男客户这次气得胸膛起伏，直接发飙：不知好歹，换了别的女孩早就打起来了，要她们跪下都不敢起来，你清高什么？<br>仙女a冷笑：我就是不稀罕啊，我又不是夜场小妹，你爱给谁和我没关系。<br>油腻男拿上钱再次扔给了仙女b，嘴里骂骂咧咧挑衅仙女a：既然你这样说了，那我就直接给人家，女人，要懂得审时度势。<br>仙女b忙不迭的接过钱，装进了包包，脸上充满着胜利者的喜悦。<br>我只是一个吃瓜员工，自然没有说的权利。<br>但是你们猜，我发现了什么。<br>我在厕所和两位仙女狭路相逢。<br>看到两位小仙女嘻嘻哈哈的把钱分了，一人一半。<br>我看呆了，然后仙女a对我说：姐，你不懂这种老男人，他们花样太多了，真的太多了……<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a> | <a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a><p><a href=\"https://t.me/s/inside1024/85498\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18604.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18604.html",
+      "title": "近来和一些触点交流，更在地地理解了两个问：1.为什么中国很难出有匠人精神的好产品。2.为什么中国本土市场的大公司垄断如此严重。这两个问的答案是寄生在这片土壤的每个人的文化观念里的，只有随着人均物质水平的提高才能缓慢改善，并且可能还需要几代人",
+      "date_published": "2026-09-21T19:49:00.000Z",
+      "content_html": "近来和一些触点交流，更在地地理解了两个问：<br>1.为什么中国很难出有匠人精神的好产品。<br>2.为什么中国本土市场的大公司垄断如此严重。<br>这两个问的答案是寄生在这片土壤的每个人的文化观念里的，只有随着人均物质水平的提高才能缓慢改善，并且可能还需要几代人。<p><a href=\"https://t.me/s/dogdairy/18604\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
+      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18603.html",
+      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18603.html",
+      "title": "最近被头猪拱了，顺手总结了一下这些年被猪拱的过程发现全体男性撩妹就是那些手段：1.你长在我的审美点上 2.你好有趣 3.每天聊天 4.约线下 5.表白深度接触正想吐槽男同胞缺乏创新用这种流程反复创妹子，gay蜜慢悠悠来了一句：我们男人进攻就",
+      "date_published": "2026-09-21T19:15:00.000Z",
+      "content_html": "最近被头猪拱了，顺手总结了一下这些年被猪拱的过程<br><br>发现全体男性撩妹就是那些手段：1.你长在我的审美点上 2.你好有趣 3.每天聊天 4.约线下 5.表白深度接触<br><br>正想吐槽男同胞缺乏创新用这种流程反复创妹子，gay蜜慢悠悠来了一句：我们男人进攻就是这样的呀，有自己的SOP，你难道没有嘛？<br><br>仔细想了一下，还真有，第一次约会的时候我都会跟男生说个故事，三年了，这个故事从来没变过<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09FA5B2.png')\"><b>🥲</b></i><p><a href=\"https://t.me/s/dogdairy/18603\">查看 Telegram 原帖（含图片/视频）</a></p>"
+    },
+    {
       "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85497.html",
       "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85497.html",
       "title": "不去大西北转一圈，遗憾大发了每日吃瓜 @doubannew每日尴图 @moyu2023",
@@ -6948,62 +7004,6 @@
       "title": "很多程序员自己掌握了编程就随便低估编程的难度，动不动劝人转码。就拿被他们认为最简单的前端来说，我自己亲历了完整过程，从小白一无所知开始学，到html/css/js，到两个框架，到webpack各种插件、优化、热加载、微前端、背八股，然而面试",
       "date_published": "2026-09-17T06:01:00.000Z",
       "content_html": "很多程序员自己掌握了编程就随便低估编程的难度，动不动劝人转码。<br>就拿被他们认为最简单的前端来说，我自己亲历了完整过程，从小白一无所知开始学，到html/css/js，到两个框架，到webpack各种插件、优化、热加载、微前端、背八股，然而面试前端目前0%成功率，码根本很难转。<br><br>频道导航<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F9187.png')\"><b>👇</b></i><br><a href=\"https://t.me/taobao1024\" target=\"_blank\">@taobao1024</a><p><a href=\"https://t.me/s/inside1024/85166\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18357.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18357.html",
-      "title": "人，到中年随时要检查肚皮状态人，到中年随时要检查肚皮状态",
-      "date_published": "2026-09-17T05:28:04.000Z",
-      "content_html": "<div class=\"tgme_widget_message_text js-message_text\" dir=\"auto\">人，到中年随时要检查肚皮状态</div><p><a href=\"https://t.me/s/dogdairy/18357\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18356.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18356.html",
-      "title": "据说这段视频，很多人都是翻来覆去看，不知道为何😋😋😋👫中年指南 ｜优质资源｜优质信息｜内幕消息",
-      "date_published": "2026-09-17T05:17:01.000Z",
-      "content_html": "据说这段视频，很多人都是翻来覆去看，不知道为何<i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F988B.png')\"><b>😋</b></i><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F988B.png')\"><b>😋</b></i><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F988B.png')\"><b>😋</b></i><br><br><a href=\"https://t.me/dogdairy\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\"><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F91AB.png')\"><b>👫</b></i>中年指南</a> ｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a>｜<a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a>｜<a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a><p><a href=\"https://t.me/s/dogdairy/18356\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85165.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85165.html",
-      "title": "一大早被一个pr烦到了，我说你转告客户，我素质极差，无法控制。如果她再提无理要求我就会删掉所有广告的部分直接发布，且我会在这里给对家带货，且我会去小红书你们所有非报备笔记下方举报品牌没有走广审流程。说完负责人立马出来滑跪，后续沟通一路畅通。",
-      "date_published": "2026-09-17T05:16:21.000Z",
-      "content_html": "一大早被一个pr烦到了，我说你转告客户，我素质极差，无法控制。<br>如果她再提无理要求我就会删掉所有广告的部分直接发布，且我会在这里给对家带货，且我会去小红书你们所有非报备笔记下方举报品牌没有走广审流程。<br>说完负责人立马出来滑跪，后续沟通一路畅通。就我发现很多人不配被好好对待，他们只能听懂难听的。<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\">@inside1024</a> <a href=\"?q=%23%E5%86%85%E5%B9%95%E6%B6%88%E6%81%AF\">#内幕消息</a><p><a href=\"https://t.me/s/inside1024/85165\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18355.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18355.html",
-      "title": "刚刚跟朋友聊天他说男人 30 岁以后最害怕的，不是被人炒鱿鱼，也不是被人带绿帽，也不是那里痛那里病了……最害怕是 半夜响起来的电声…………他说但凡有过一次经历的人，只要 12 点以后电响声起来，那心顿时揪起来…………最害怕最害怕是归属地为故",
-      "date_published": "2026-09-17T04:51:02.000Z",
-      "content_html": "刚刚跟朋友聊天<br>他说男人 30 岁以后最害怕的，不是被人炒鱿鱼，也不是被人带绿帽，也不是那里痛那里病了……<br>最害怕是 半夜响起来的电声…………<br>他说但凡有过一次经历的人，只要 12 点以后电响声起来，那心顿时揪起来…………<br>最害怕最害怕是归属地为故乡的手机号码……<br>家财万贯不如健康好一半！<br><br><a href=\"https://t.me/dogdairy\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\"><i class=\"emoji\" style=\"background-image:url('//telegram.org/img/emoji/40/F09F91AB.png')\"><b>👫</b></i>中年指南</a> ｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a>｜<a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a>｜<a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a><p><a href=\"https://t.me/s/dogdairy/18355\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18354.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/dogdairy.18354.html",
-      "title": "「允许」------允许糟糕的事情发生，允许事情得不到解决，允许自己有负面情绪，允许自己暴躁、哭泣、难过，允许自己无奈。。。。。。。我想所有这些，可能在外人看来都是不 OK 的。但不管是情绪、行为、事实还是结果，当它真正发生的时候，更重要的",
-      "date_published": "2026-09-17T04:47:00.000Z",
-      "content_html": "「允许」<br>------<br>允许糟糕的事情发生，允许事情得不到解决，允许自己有负面情绪，允许自己暴躁、哭泣、难过，允许自己无奈。。。。。。。<br>我想所有这些，可能在外人看来都是不 OK 的。<br>但不管是情绪、行为、事实还是结果，当它真正发生的时候，更重要的动作是你要站在它们的另一边，就像站在房间的另一个角落去看到它们。<br>这就是\"允许\"的那个过程。<br>当你看见它们的时候，你才能真正接受这些行为、情绪、事实和结果，然后你是否才能真正地往另一个更好的方向去行进。<p><a href=\"https://t.me/s/dogdairy/18354\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85164.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85164.html",
-      "title": "利的事，你做的越久这个事情就做的越好。我记得2021年我到处找捷径想要一步登天的时候，等到的结果都是被割韭菜，你想要一步登天，想要捷径你也会论为镰刀下的韭菜。10、要坚信自己可以搞到钱我没钱没经验的时候就是莫名相信自己能挣到钱，还记得那时候",
-      "date_published": "2026-09-17T04:44:06.000Z",
-      "content_html": "利的事，你做的越久这个事情就做的越好。<br>我记得2021年我到处找捷径想要一步登天的时候，等到的结果都是被割韭菜，你想要一步登天，想要捷径你也会论为镰刀下的韭菜。<br>10、要坚信自己可以搞到钱<br>我没钱没经验的时候就是莫名相信自己能挣到钱，还记得那时候我刚接触互联网，我告诉我同学，这个可以赚钱，我同学笑我异想天开，后来我也用实际证明确实可以赚到！<br>当你足够想要做一件事情的时候，很难不成功，相信自己并坚持下去，别让身边的任何事影响你，困难会自动的给你让路。<br>有故事的NPC<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">内幕消息</a>｜<a href=\"https://t.me/meiriyishu\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质资源</a> | <a href=\"https://t.me/chunse1024/8467\" target=\"_blank\" rel=\"noopener\" onclick=\"return confirm('Open this link?\\n\\n'+this.href);\">优质信息</a><p><a href=\"https://t.me/s/inside1024/85164\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85163.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85163.html",
-      "title": "惊闻iOS 27史诗级更新支持了调休日闹钟，打开一看只是普通闹钟支持了，最常用的睡眠闹钟居然不支持……only apple can do@inside1024 #内幕消息",
-      "date_published": "2026-09-17T04:31:40.000Z",
-      "content_html": "惊闻iOS 27史诗级更新支持了调休日闹钟，打开一看只是普通闹钟支持了，最常用的睡眠闹钟居然不支持……<br>only apple can do<br><br><a href=\"https://t.me/inside1024\" target=\"_blank\">@inside1024</a> <a href=\"?q=%23%E5%86%85%E5%B9%95%E6%B6%88%E6%81%AF\">#内幕消息</a><p><a href=\"https://t.me/s/inside1024/85163\">查看 Telegram 原帖（含图片/视频）</a></p>"
-    },
-    {
-      "id": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85162.html",
-      "url": "https://17678319606.github.io/tg-aggregator-cn-snapshot/zhongnianren/posts/inside1024.85162.html",
-      "title": "...结婚一个月了，老公这两个字我才叫出口两次。（脸涨的通红）",
-      "date_published": "2026-09-17T03:47:00.000Z",
-      "content_html": "...结婚一个月了，老公这两个字我才叫出口两次。<br>（脸涨的通红）<p><a href=\"https://t.me/s/inside1024/85162\">查看 Telegram 原帖（含图片/视频）</a></p>"
     }
   ]
 }
