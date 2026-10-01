@@ -1,0 +1,55 @@
+name: keepalive
+
+# ============================================================================
+# 保活工作流 —— 专门应对「GitHub 长期无提交会自动禁用 scheduled 定时任务」的问题。
+# ----------------------------------------------------------------------------
+# GitHub 规则：公开仓库若连续约 60 天没有任何活动（提交/PR/Issue 等），
+# 会自动禁用其 schedule 定时工作流（包括本文件的定时、snapshot.yml 的每 15 分钟、
+# housekeeping.yml 的月度压缩都会一起被停掉），导致同步悄然停摆。
+#
+# 本工作流每 ~25 天检查一次：若距上次提交已超过 45 天，就写入一个保活提交，
+# 确保仓库永远「活跃」，scheduled 定时永不被禁用。
+# 与 snapshot/housekeeping 共用并发组 tg-aggregator-sync，不会同时运行。
+#
+# 注：月度 housekeeping（每 30 天必有提交）本身也已低于 60 天阈值；本文件是更稳的
+# 双保险，且带「超 45 天才提交」的判断，不会制造无意义的历史噪音（housekeeping 会压缩）。
+# ============================================================================
+
+concurrency:
+  group: tg-aggregator-sync
+  cancel-in-progress: false
+
+on:
+  schedule:
+    - cron: '17 3 1,26 * *'   # 每月 1 日、26 日 03:17 UTC（约 25 天一次，北京时间约 11:17）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 保活（仅当超 45 天无提交才提交，避免无谓历史）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "bot@users.noreply.github.com"
+          last=$(git log -1 --format=%ct 2>/dev/null || echo 0)
+          now=$(date +%s)
+          age=$(( (now - ${last}) / 86400 ))
+          echo "距上次提交约 ${age} 天"
+          if [ "$age" -gt 45 ]; then
+            echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) keepalive" >> .keepalive
+            git add -A
+            git commit -m "keepalive: $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "无可提交"
+            git push
+            echo "✅ 已写入保活提交，防止 scheduled workflow 被 GitHub 因长期无活动而禁用"
+          else
+            echo "近期已有活动，跳过保活提交"
+          fi
