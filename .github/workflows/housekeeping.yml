@@ -1,0 +1,48 @@
+name: housekeeping
+
+# 月度仓库整理：把全部历史压缩成「单个提交」，强制有界仓库体积。
+# 为什么需要：sync.mjs 已限制工作树只保留 ≤ MAX_POSTS 篇文章页（防无限堆积），
+# 但每次提交仍会写入新的 rss.xml/json（共 ~750KB），历史会持续累积。
+# 本项目是「镜像」，不需要保留历史，每月把历史压成一条即可让仓库体积恒定。
+#
+# 与 snapshot.yml 共用并发组 tg-aggregator-sync，不会同时运行，避免 force-push 互相覆盖。
+
+concurrency:
+  group: tg-aggregator-sync
+  cancel-in-progress: false
+
+on:
+  schedule:
+    - cron: '17 4 1 * *'   # 每月 1 日 04:17 UTC 执行（北京时间约 12:17，低峰）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  squash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 压缩历史为单提交并强制推送
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "bot@users.noreply.github.com"
+          # 用当前工作树创建一个全新的孤立分支（历史清零）
+          git checkout --orphan housekeeping_tmp
+          git add -A
+          git commit -m "snapshot: squashed history @ $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "无变更可压缩"
+          git branch -M housekeeping_tmp main
+          git push -f origin main
+          # 同步 latest 标签，避免指向已失效的旧提交
+          git tag -f latest
+          git push -f origin latest
+          echo "历史压缩完成，仓库体积已重置为单提交大小"
+      - name: 报告压缩后体积
+        run: |
+          du -sh .git
+          git rev-list --count HEAD
